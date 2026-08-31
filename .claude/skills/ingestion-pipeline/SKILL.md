@@ -11,12 +11,22 @@ canónico.
 
 ## Pasos
 
-1. **Leer el documento** desde `vault/_inbox/`.
-   - `.md`, `.txt` → leer directo.
-   - `.pdf`, `.docx`, `.xlsx` → si el entorno tiene skills de documentos
-     disponibles (pdf/docx/xlsx), usarlas para extraer texto y tablas antes
-     de continuar. Si no están disponibles, pedir al usuario que convierta
-     el archivo a texto/markdown primero.
+1. **Leer el documento** desde `vault/_inbox/`, usando la skill de lectura
+   correspondiente a su tipo — no leas el archivo crudo sin pasar primero
+   por la skill adecuada, cada una sabe qué buscar y qué riesgos evitar
+   para ese formato:
+   - `.pdf` → skill `read-pdf`.
+   - `.docx` → skill `read-docx`.
+   - `.xlsx` / `.csv` → skill `read-xlsx`.
+   - `.md`, `.txt`, notas informales → skill `read-plaintext-notes`.
+   - `.atmx`, `.mbot`, `.aapkg`, o un XML/TXT convertido desde alguno de
+     esos → skill `read-automation-anywhere-export`. Este tipo de fuente
+     es la más confiable para "qué hace el bot realmente" — si contradice
+     a un manual de negocio ya ingerido, no elijas una fuente en silencio,
+     marca la discrepancia explícitamente (ver esa skill para el detalle).
+   - Si el formato no encaja en ninguna de las anteriores, dilo
+     explícitamente al usuario y pide una conversión antes de continuar,
+     en vez de adivinar el contenido.
 2. **Identificar candidatos a nodo**: leer el texto buscando procesos,
    pasos, reglas ("si... entonces..."), sistemas mencionados, campos de
    datos, excepciones, historias de usuario y bots — según los tipos
