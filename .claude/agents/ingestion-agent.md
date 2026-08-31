@@ -10,6 +10,11 @@ skills:
   - vault-conventions
   - ingestion-pipeline
   - rpa-best-practices
+  - read-pdf
+  - read-docx
+  - read-xlsx
+  - read-plaintext-notes
+  - read-automation-anywhere-export
 color: blue
 ---
 

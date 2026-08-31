@@ -19,27 +19,27 @@
 ## 1. Arquitectura en capas
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  CLI (Claude Code / OpenCode / Codex CLI...)                 │
-│  → Skills (estándar abierto) + Subagentes específicos de cada│
-│    herramienta, todos delgados: orquestan, no re-implementan │
-└───────────────────────────┬───────────────────────────────────┘
+┌────────────────────────────────────────────────────────────-----┐
+│  CLI (Claude Code / OpenCode / Codex CLI...)                    │
+│  → Skills (estándar abierto) + Subagentes específicos de cada  │
+│    herramienta, todos delgados: orquestan, no re-implementan    │
+└───────────────────────────┬───────────────────────────────────--┘
                              │ MCP
 ┌───────────────────────────▼───────────────────────────────────┐
 │  MOTOR (servidor MCP, agnóstico de CLI y de modelo)            │
-│                                                                 │
-│   ┌───────────────┐  ┌────────────────┐  ┌──────────────────┐│
-│   │  Ingestión     │→ │ Vault Obsidian │→ │  Retrieval        ││
-│   │  multi-formato │  │ (grafo en .md) │  │  (GraphRAG híbrido)││
-│   └───────────────┘  └────────────────┘  └──────────────────┘│
+│                                                                │
+│   ┌───────────────┐  ┌────────────────┐  ┌──────────────────┐  │
+│   │  Ingestión     │→ │ Vault Obsidian │→ │  Retrieval       │
+│   │  multi-formato │  │ (grafo en .md) │  │  (GraphRAG híbrido)│
+│   └───────────────┘  └────────────────┘  └──────────────────┘  │
 │           │                    │                    │          │
-│   ┌───────▼────────────────────▼────────────────────▼────────┐│
-│   │        Índice vectorial (embeddings de notas)              ││
-│   └─────────────────────────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────────┘
+│   ┌───────▼────────────────────▼────────────────────▼────   │
+│   │        Índice vectorial (embeddings de notas)           │  │
+│   └─────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────---┘
 ```
 
-**Por qué MCP como frontera:** desacopla "cómo pregunto" (CLI/agente) de "cómo se responde" (grafo + retrieval). El motor no sabe ni le importa si lo llama Claude Code o OpenCode.
+Future: **Por qué MCP como frontera:** desacopla "cómo pregunto" (CLI/agente) de "cómo se responde" (grafo + retrieval). El motor no sabe ni le importa si lo llama Claude Code o OpenCode.
 
 ---
 
@@ -66,17 +66,17 @@ Objetivo: convertir documentos heterogéneos en unidades normalizadas listas par
 
 **Tipos de nodo:**
 
-| Nodo | Ejemplo |
-|---|---|
-| `Proceso` | "Conciliación de facturas proveedor X" |
-| `PasoDeProceso` | "Validar campo NIT contra ERP" |
-| `ReglaDeNegocio` | "Si monto > $5M, requiere aprobación gerencial" |
-| `Sistema` | "SAP", "Excel origen", "Portal proveedor" |
-| `CampoDeDato` | "NIT", "Monto factura" |
-| `Excepcion` | "NIT no encontrado en ERP" |
-| `HistoriaDeUsuario` | HU-014 |
-| `Robot/Bot` | "Bot_ConciliacionFacturas" |
-| `Documento` | fuente original, con metadata |
+| Nodo                | Ejemplo                                         |
+| ------------------- | ----------------------------------------------- |
+| `Proceso`           | "Conciliación de facturas proveedor X"          |
+| `PasoDeProceso`     | "Validar campo NIT contra ERP"                  |
+| `ReglaDeNegocio`    | "Si monto > $5M, requiere aprobación gerencial" |
+| `Sistema`           | "SAP", "Excel origen", "Portal proveedor"       |
+| `CampoDeDato`       | "NIT", "Monto factura"                          |
+| `Excepcion`         | "NIT no encontrado en ERP"                      |
+| `HistoriaDeUsuario` | HU-014                                          |
+| `Robot/Bot`         | "Bot_ConciliacionFacturas"                      |
+| `Documento`         | fuente original, con metadata                   |
 
 **Tipos de relación (ejemplos):**
 
@@ -117,12 +117,15 @@ Si el monto de la factura supera $5.000.000, el proceso requiere
 aprobación de un gerente antes de continuar.
 
 ## Depende de
+
 - [[CampoDeDato - Monto factura]]
 
 ## Aplica en
+
 - [[PasoDeProceso - Validar monto]]
 
 ## Excepciones conocidas
+
 - [[Excepcion - Monto ambiguo por moneda]]
 ```
 
@@ -130,7 +133,7 @@ aprobación de un gerente antes de continuar.
 
 **Por qué esta elección y no una base de grafo formal desde ya:**
 
-- El mismo artefacto sirve como (a) fuente de datos para el motor MCP y (b) mapa visual navegable por humanos en la app Obsidian — el usuario nuevo literalmente *ve* el proceso antes de preguntarle nada al agente.
+- El mismo artefacto sirve como (a) fuente de datos para el motor MCP y (b) mapa visual navegable por humanos en la app Obsidian — el usuario nuevo literalmente _ve_ el proceso antes de preguntarle nada al agente.
 - Cero infraestructura: `git clone && abrir carpeta en Obsidian` ya es usable, clave para adopción open-source.
 - Es texto plano versionable con git — el histórico de cambios del proceso queda auditable gratis.
 
@@ -155,16 +158,16 @@ Una vez el motor MCP responde de forma confiable (Fase 2), se construye esta cap
 
 ### 6.1 Skills genéricas (núcleo del framework — reusables en cualquier proyecto RPA)
 
-Estas skills no saben nada sobre un proceso de negocio específico. Encapsulan *método*, no *contenido*.
+Estas skills no saben nada sobre un proceso de negocio específico. Encapsulan _método_, no _contenido_.
 
-| Skill | Qué hace | Sabe sobre RPA en general |
-|---|---|---|
-| `ingestion-pipeline` | Orquesta normalización + chunking + extracción (sección 2) | No |
-| `vault-conventions` | La "gramática" compartida: cómo escribir/leer notas del vault (frontmatter, secciones tipadas, naming) — la usa cualquier skill o subagente que toque el vault | No |
-| `cite-sources` | Política transversal: toda afirmación debe traer `[[Documento]]` de origen; si no hay fuente en el grafo, decir explícitamente que no se sabe, nunca inventar | No |
-| `socratic-method` | Técnica pedagógica genérica: convierte una respuesta directa en una secuencia de preguntas guía, evalúa la respuesta del usuario contra el nodo del grafo | No |
-| `flow-simulation` | Motor genérico de "qué pasa si": camina relaciones tipadas del grafo que se le pase y compone escenarios | No |
-| `rpa-best-practices` | Conocimiento general de la industria RPA: patrones comunes de excepciones, convenciones de nombres de bots, checklist de puntos ciegos típicos | Sí — pero es conocimiento de industria, no de un cliente/proceso concreto |
+| Skill                | Qué hace                                                                                                                                                       | Sabe sobre RPA en general                                                 |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `ingestion-pipeline` | Orquesta normalización + chunking + extracción (sección 2)                                                                                                     | No                                                                        |
+| `vault-conventions`  | La "gramática" compartida: cómo escribir/leer notas del vault (frontmatter, secciones tipadas, naming) — la usa cualquier skill o subagente que toque el vault | No                                                                        |
+| `cite-sources`       | Política transversal: toda afirmación debe traer `[[Documento]]` de origen; si no hay fuente en el grafo, decir explícitamente que no se sabe, nunca inventar  | No                                                                        |
+| `socratic-method`    | Técnica pedagógica genérica: convierte una respuesta directa en una secuencia de preguntas guía, evalúa la respuesta del usuario contra el nodo del grafo      | No                                                                        |
+| `flow-simulation`    | Motor genérico de "qué pasa si": camina relaciones tipadas del grafo que se le pase y compone escenarios                                                       | No                                                                        |
+| `rpa-best-practices` | Conocimiento general de la industria RPA: patrones comunes de excepciones, convenciones de nombres de bots, checklist de puntos ciegos típicos                 | Sí — pero es conocimiento de industria, no de un cliente/proceso concreto |
 
 ### 6.2 Artefactos específicos del proceso (generados, no escritos a mano)
 
@@ -176,13 +179,13 @@ No son skills que alguien redacta — se generan a partir de la ingestión de ca
 
 ### 6.3 Subagentes
 
-| Subagente | Responsabilidad | Skills precargadas | Tools MCP | Se invoca |
-|---|---|---|---|---|
-| `ingestion-agent` | Lee documentos crudos → propone nodos/relaciones al staging | `ingestion-pipeline`, `vault-conventions`, `rpa-best-practices` | `extract_entities`, `write_staging` | `/ingest <archivo>` |
-| `graph-writer-agent` | Toma el staging ya revisado por el humano → escribe notas al vault → regenera la skill de overview | `vault-conventions` | `commit_to_vault`, `regenerate_overview` | Al aprobar una revisión |
-| `qa-agent` | Responde preguntas directas (perfil de negocio) | `cite-sources` | `query_local`, `query_global`, `trace_source` | Modo pregunta directa |
-| `tutor-agent` | Modo socrático (perfil técnico) | `socratic-method`, `cite-sources` | `query_local`, `get_entity` | `/aprender` |
-| `simulation-agent` | Simulaciones "qué pasa si" | `flow-simulation`, `cite-sources` | `query_local`, `get_entity`, `trace_source` | `/simular` |
+| Subagente            | Responsabilidad                                                                                    | Skills precargadas                                              | Tools MCP                                     | Se invoca               |
+| -------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------- | ----------------------- |
+| `ingestion-agent`    | Lee documentos crudos → propone nodos/relaciones al staging                                        | `ingestion-pipeline`, `vault-conventions`, `rpa-best-practices` | `extract_entities`, `write_staging`           | `/ingest <archivo>`     |
+| `graph-writer-agent` | Toma el staging ya revisado por el humano → escribe notas al vault → regenera la skill de overview | `vault-conventions`                                             | `commit_to_vault`, `regenerate_overview`      | Al aprobar una revisión |
+| `qa-agent`           | Responde preguntas directas (perfil de negocio)                                                    | `cite-sources`                                                  | `query_local`, `query_global`, `trace_source` | Modo pregunta directa   |
+| `tutor-agent`        | Modo socrático (perfil técnico)                                                                    | `socratic-method`, `cite-sources`                               | `query_local`, `get_entity`                   | `/aprender`             |
+| `simulation-agent`   | Simulaciones "qué pasa si"                                                                         | `flow-simulation`, `cite-sources`                               | `query_local`, `get_entity`, `trace_source`   | `/simular`              |
 
 **Regla de diseño clave:** los subagentes **nunca se hablan directamente entre sí**. Todo pasa por el orquestador principal (la sesión CLI) y por el motor MCP como pizarra común. Esto mantiene cada subagente reemplazable e independiente — puedes cambiar `tutor-agent` sin tocar `qa-agent`.
 
@@ -243,13 +246,13 @@ flowchart LR
 
 ## 8. Stack tecnológico propuesto (orientado a "gratis y fácil de correr localmente")
 
-| Capa | Opción recomendada | Alternativa |
-|---|---|---|
-| Grafo / storage | Vault de Obsidian (markdown + frontmatter) + parser en `networkx` | Kùzu o Neo4j Community (al escalar a muchos proyectos grandes) |
-| Índice vectorial | LanceDB (embebido, open source) | Qdrant local |
-| Extracción de documentos | pipeline propio + librerías open source de conversión | — |
-| Servidor del motor | MCP server en Python o TypeScript | — |
-| Agentes | Agent Skills (estándar abierto) + subagentes por CLI | — |
+| Capa                     | Opción recomendada                                                | Alternativa                                                    |
+| ------------------------ | ----------------------------------------------------------------- | -------------------------------------------------------------- |
+| Grafo / storage          | Vault de Obsidian (markdown + frontmatter) + parser en `networkx` | Kùzu o Neo4j Community (al escalar a muchos proyectos grandes) |
+| Índice vectorial         | LanceDB (embebido, open source)                                   | Qdrant local                                                   |
+| Extracción de documentos | pipeline propio + librerías open source de conversión             | —                                                              |
+| Servidor del motor       | MCP server en Python o TypeScript                                 | —                                                              |
+| Agentes                  | Agent Skills (estándar abierto) + subagentes por CLI              | —                                                              |
 
 La elección "embebido, sin servidor, texto plano" es intencional: baja la barrera de entrada a `git clone && correr`, clave para adopción open-source.
 

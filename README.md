@@ -1,8 +1,8 @@
-# rpa-cerebro (nombre temporal)
+# Boost Your Process Understanding
 
 Base de conocimiento para entender rápido proyectos RPA legados, construida
 como un vault de Obsidian + skills y subagentes portables entre Claude Code
-y OpenCode. Sin MCP ni vectorización todavía — esta es la versión mínima
+y OpenCode. Sin MCP ni vectorización (por el momento) — esta es la versión mínima
 para trabajar directamente desde la CLI (ver `docs/arquitectura-v0.1.md`
 para el diseño completo hacia el que esto evoluciona).
 
@@ -13,7 +13,7 @@ rpa-cerebro/
 ├── vault/                     ← la base de conocimiento (el grafo)
 │   ├── _templates/            ← plantilla por cada tipo de nodo
 │   ├── _inbox/                ← documentos crudos sin procesar (pdf, docx, xlsx, md...)
-│   ├── _staging/               ← notas propuestas por ingestión, pendientes de revisión
+│   ├── _staging/              ← notas propuestas por ingestión, pendientes de revisión
 │   └── <proyecto>/            ← notas verificadas, una carpeta por proyecto RPA
 │       ├── procesos/
 │       ├── pasos/
@@ -42,24 +42,24 @@ ambos.
 
 ## Las 6 skills genéricas
 
-| Skill | Rol |
-|---|---|
-| `vault-conventions` | Esquema del grafo: tipos de nodo, frontmatter, relaciones tipadas |
-| `cite-sources` | Política: toda respuesta debe citar su nota fuente |
-| `ingestion-pipeline` | Cómo convertir un documento crudo en notas candidatas |
-| `socratic-method` | Técnica de aprendizaje activo (perfil técnico) |
-| `flow-simulation` | Motor de simulaciones "qué pasa si" |
-| `rpa-best-practices` | Conocimiento genérico de la industria RPA |
+| Skill                | Rol                                                               |
+| -------------------- | ----------------------------------------------------------------- |
+| `vault-conventions`  | Esquema del grafo: tipos de nodo, frontmatter, relaciones tipadas |
+| `cite-sources`       | Política: toda respuesta debe citar su nota fuente                |
+| `ingestion-pipeline` | Cómo convertir un documento crudo en notas candidatas             |
+| `socratic-method`    | Técnica de aprendizaje activo (perfil técnico)                    |
+| `flow-simulation`    | Motor de simulaciones "qué pasa si"                               |
+| `rpa-best-practices` | Conocimiento genérico de la industria RPA                         |
 
 ## Los 5 subagentes
 
-| Subagente | Hace qué | Puede escribir en |
-|---|---|---|
-| `ingestion-agent` | Lee `vault/_inbox/` → propone notas | solo `vault/_staging/` |
-| `graph-writer-agent` | Toma staging aprobado → lo escribe al vault final | `vault/` completo |
-| `qa-agent` | Responde preguntas directas (usuario de negocio) | nada (solo lectura) |
-| `tutor-agent` | Modo socrático (usuario técnico) | nada (solo lectura) |
-| `simulation-agent` | Simulaciones "qué pasa si" | nada (solo lectura) |
+| Subagente            | Hace qué                                          | Puede escribir en      |
+| -------------------- | ------------------------------------------------- | ---------------------- |
+| `ingestion-agent`    | Lee `vault/_inbox/` → propone notas               | solo `vault/_staging/` |
+| `graph-writer-agent` | Toma staging aprobado → lo escribe al vault final | `vault/` completo      |
+| `qa-agent`           | Responde preguntas directas (usuario de negocio)  | nada (solo lectura)    |
+| `tutor-agent`        | Modo socrático (usuario técnico)                  | nada (solo lectura)    |
+| `simulation-agent`   | Simulaciones "qué pasa si"                        | nada (solo lectura)    |
 
 ## Flujo de trabajo
 
@@ -85,14 +85,6 @@ ambos.
 
 Abre la carpeta `vault/` como vault en la app de Obsidian para ver el grafo
 de notas y navegar los wikilinks directamente.
-
-## Instalar en tu CLI
-
-**Claude Code:** abre este directorio como proyecto; `.claude/skills/` y
-`.claude/agents/` se cargan automáticamente.
-
-**OpenCode:** abre este directorio como proyecto; `.opencode/agent/` se
-carga automáticamente, y `.claude/skills/` también (ver nota arriba).
 
 ## Fuera de alcance por ahora
 
