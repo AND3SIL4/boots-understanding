@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rpa-cerebro — Guía del proyecto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #10131a;
+      --panel: #171c26;
+      --panel-2: #1d2330;
+      --line: #2a3040;
+      --text: #eeece5;
+      --muted: #8b90a3;
+      --amber: #e3a34e;
+      --amber-dim: #7a5a2c;
+      --teal: #4fd1bf;
+      --teal-dim: #285f58;
+      --red: #e2665a;
+      --red-dim: #6d332e;
+      --display: 'Space Grotesk', sans-serif;
+      --body: 'Inter', sans-serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--text);
+      font-family: var(--body);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--amber);
+      color: var(--ink);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* ---------- layout scaffold ---------- */
+    .deck {
+      scroll-snap-type: y mandatory;
+      height: 100vh;
+      overflow-y: scroll;
+    }
+
+    .slide {
+      position: relative;
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7vh 8vw;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .slide-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .kicker {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--teal);
+      letter-spacing: .02em;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: baseline;
+      gap: .6rem;
+    }
+
+    .kicker .n {
+      color: var(--muted);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--display);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+      line-height: 1.03;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 3.6vw, 3rem);
+      line-height: 1.08;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    p.lede {
+      font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+      color: var(--muted);
+      max-width: 640px;
+      margin-top: 1.1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    code,
+    .mono {
+      font-family: var(--mono);
+    }
+
+    /* ---------- nav ---------- */
+    .rail {
+      position: fixed;
+      right: 2.2vw;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 50;
+    }
+
+    .rail button {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 1px solid var(--muted);
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+
+    .rail button.active {
+      background: var(--amber);
+      border-color: var(--amber);
+      transform: scale(1.35);
+    }
+
+    .hud {
+      position: fixed;
+      left: 2.2vw;
+      bottom: 2.4vh;
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--muted);
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .hud .cur {
+      color: var(--amber);
+    }
+
+    .arrows {
+      position: fixed;
+      right: 2.2vw;
+      bottom: 2.4vh;
+      display: flex;
+      gap: 10px;
+      z-index: 50;
+    }
+
+    .arrows button {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .2s, background .2s;
+    }
+
+    .arrows button:hover {
+      border-color: var(--amber);
+      background: var(--panel-2);
+    }
+
+    .arrows svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ---------- reusable bits ---------- */
+    .rule {
+      height: 1px;
+      background: var(--line);
+      width: 100%;
+      margin: 2.2rem 0;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: .72rem;
+      padding: .2rem .5rem;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      color: var(--muted);
+    }
+
+    .tag.amber {
+      border-color: var(--amber-dim);
+      color: var(--amber);
+    }
+
+    .tag.teal {
+      border-color: var(--teal-dim);
+      color: var(--teal);
+    }
+
+    .tag.red {
+      border-color: var(--red-dim);
+      color: var(--red);
+    }
+
+    .ledger {
+      border-top: 1px solid var(--line);
+    }
+
+    .ledger-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .ledger-row .name {
+      font-family: var(--mono);
+      font-size: .92rem;
+      color: var(--amber);
+      padding-top: .1rem;
+    }
+
+    .ledger-row .desc {
+      color: var(--text);
+      font-size: .96rem;
+    }
+
+    .ledger-row .desc .sub {
+      color: var(--muted);
+      font-size: .88rem;
+      margin-top: .25rem;
+    }
+
+    .code-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 1.3rem 1.4rem;
+      font-family: var(--mono);
+      font-size: .86rem;
+      color: var(--text);
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.6;
+    }
+
+    .code-panel .c1 {
+      color: var(--teal);
+    }
+
+    .code-panel .c2 {
+      color: var(--amber);
+    }
+
+    .code-panel .c3 {
+      color: var(--muted);
+    }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+    }
+
+    @media (max-width:860px) {
+      .grid2 {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .grid3 {
+        grid-template-columns: 1fr;
+      }
+
+      .ledger-row {
+        grid-template-columns: 1fr;
+        gap: .4rem;
+      }
+
+      .rail {
+        display: none;
+      }
+    }
+
+    /* ---------- svg graph deco ---------- */
+    .graph-deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .55;
+    }
+
+    .graph-deco line {
+      stroke: var(--line);
+      stroke-width: 1;
+    }
+
+    .graph-deco circle {
+      fill: var(--ink);
+      stroke: var(--muted);
+      stroke-width: 1.2;
+    }
+
+    .graph-deco circle.hi {
+      stroke: var(--amber);
+      fill: var(--amber);
+      opacity: .9;
+    }
+
+    .graph-deco circle.hi2 {
+      stroke: var(--teal);
+      fill: var(--teal);
+      opacity: .9;
+    }
+
+    .steps {
+      counter-reset: step;
+    }
+
+    .step {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 1.4rem;
+      padding: 1.3rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .step:first-child {
+      border-top: 1px solid var(--line);
+    }
+
+    .step::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--mono);
+      color: var(--amber);
+      font-size: 1rem;
+      padding-top: .15rem;
+    }
+
+    .step h3 {
+      margin-bottom: .35rem;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: .95rem;
+      max-width: 640px;
+    }
+
+    .flowchip {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-family: var(--mono);
+      font-size: .85rem;
+      color: var(--text);
+    }
+
+    .flowchip .box {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: .45rem .8rem;
+      background: var(--panel);
+    }
+
+    .flowchip .arrow {
+      color: var(--muted);
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .compare>div {
+      background: var(--panel);
+      padding: 1.4rem 1.5rem;
+    }
+
+    .compare .label {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--muted);
+      margin-bottom: .6rem;
+    }
+
+    .compare .val {
+      font-family: var(--mono);
+      font-size: 1.05rem;
+    }
+
+    .compare .manual .val {
+      color: var(--teal);
+    }
+
+    .compare .bot .val {
+      color: var(--amber);
+    }
+
+    .footprint {
+      position: absolute;
+      bottom: 6vh;
+      left: 8vw;
+      right: 8vw;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    @media print {
+
+      .rail,
+      .arrows,
+      .hud {
+        display: none;
+      }
+
+      .slide {
+        min-height: auto;
+        page-break-after: always;
+      }
+
+      .deck {
+        overflow: visible;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="rail" id="rail"></div>
+  <div class="hud"><span class="cur" id="hudCur">01</span><span>/ 13</span></div>
+  <div class="arrows">
+    <button id="prevBtn" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <path d="M15 18l-6-6 6-6" />
+      </svg></button>
+    <button id="nextBtn" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <path d="M9 18l6-6-6-6" />
+      </svg></button>
+  </div>
+
+  <div class="deck" id="deck">
+
+    <!-- 01 — HERO -->
+    <section class="slide" id="s1">
+      <svg class="graph-deco" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+        <line x1="900" y1="140" x2="1040" y2="260" />
+        <line x1="1040" y1="260" x2="980" y2="420" />
+        <line x1="900" y1="140" x2="760" y2="230" />
+        <line x1="760" y1="230" x2="820" y2="380" />
+        <line x1="980" y1="420" x2="820" y2="380" />
+        <line x1="820" y1="380" x2="900" y2="540" />
+        <line x1="1040" y1="260" x2="1150" y2="380" />
+        <line x1="760" y1="230" x2="640" y2="150" />
+        <circle cx="900" cy="140" r="6" class="hi" />
+        <circle cx="1040" cy="260" r="5" />
+        <circle cx="980" cy="420" r="5" />
+        <circle cx="760" cy="230" r="5" class="hi2" />
+        <circle cx="820" cy="380" r="6" class="hi" />
+        <circle cx="900" cy="540" r="5" />
+        <circle cx="1150" cy="380" r="5" />
+        <circle cx="640" cy="150" r="4" />
+      </svg>
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">rpa-cerebro</span><span>guía del proyecto y su uso</span></div>
+        <h1>Boost Your Process </br> Understanding.</h1>
+        <p class="lede">Documentación de RPA que se convierte en un grafo al que puedes preguntar, simular y entender
+          activamente. Manuales, fichas de especificación y el export del bot dejan de ser archivos sueltos que hay que
+          releer cada vez. Se vuelven notas conectadas en un vault de Obsidian, y un puñado de subagentes especializados
+          hacen la primera lectura, el control de calidad y las preguntas por ti.</p>
+        <div class="rule"></div>
+        <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
+          <span class="tag amber">Claude Code</span>
+          <span class="tag teal">OpenCode</span>
+          <span class="tag">gratis · open source</span>
+          <span class="tag">sin MCP · sin vectorización — v0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 — PROBLEMA -->
+    <section class="slide" id="s2">
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">01</span><span>el problema</span></div>
+        <h2>Heredar un bot es releer<br>todo desde cero, otra vez.</h2>
+        <div class="rule"></div>
+        <div class="grid2">
+          <div>
+            <p style="color:var(--text); font-size:1.05rem; max-width:520px;">
+              Un proyecto RPA con años de antigüedad no vive en un solo lugar:
+              vive repartido en manuales que ya nadie actualiza, fichas de Excel
+              con reglas que cambiaron a mano, notas de correo, y el propio bot
+              — que casi siempre sabe cosas que ningún documento dice.
+            </p>
+            <p class="muted" style="margin-top:1rem;">
+              Entender las reglas de negocio y las decisiones técnicas antes de
+              poder tocar algo con confianza es, hoy, el <strong>costo más alto</strong> de dar
+              soporte a RPA legado.
+            </p>
+          </div>
+          <div class="ledger">
+            <div class="ledger-row">
+              <div class="name">manuales</div>
+              <div class="desc">pdf / docx dispersos, versiones sin fecha clara</div>
+            </div>
+            <div class="ledger-row">
+              <div class="name">fichas xlsx</div>
+              <div class="desc">reglas de negocio en celdas, sin trazabilidad</div>
+            </div>
+            <div class="ledger-row">
+              <div class="name">notas sueltas</div>
+              <div class="desc">correos, chats, decisiones que nunca llegaron al manual</div>
+            </div>
+            <div class="ledger-row">
+              <div class="name">el bot mismo</div>
+              <div class="desc">la única fuente que dice qué pasa <em>en realidad</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — LA IDEA -->
+    <section class="slide" id="s3">
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">02</span><span>la idea</span></div>
+        <h2>Un vault de Obsidian<br>haciendo de grafo de conocimiento.</h2>
+        <p class="lede">Cada nota es un nodo del proceso. Cada relación está escrita, no
+          implícita. El mismo archivo que usa un subagente para responder es el
+          que tú puedes abrir y explorar visualmente.</p>
+        <div class="rule"></div>
+        <div class="flowchip" style="flex-wrap:wrap;">
+          <span class="box">documentos crudos</span>
+          <span class="arrow">→</span>
+          <span class="box">skills de lectura</span>
+          <span class="arrow">→</span>
+          <span class="box" style="border-color:var(--amber-dim); color:var(--amber);">vault (grafo en .md)</span>
+          <span class="arrow">→</span>
+          <span class="box" style="border-color:var(--teal-dim); color:var(--teal);">subagentes de consulta</span>
+          <span class="arrow">→</span>
+          <span class="box">tú, entendiendo el proceso</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 — ARQUITECTURA -->
+    <section class="slide" id="s4">
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">03</span><span>cómo está armado</span></div>
+        <h2>Skills + subagentes,<br>sin servidor ni infraestructura.</h2>
+        <div class="rule"></div>
+        <div class="grid2">
+          <div>
+            <h3 style="color:var(--amber);">Principios de diseño</h3>
+            <p class="muted" style="margin-top:.6rem;">El vault es la fuente de verdad, no el chat — toda respuesta debe
+              poder trazarse a una nota concreta.</p>
+            <p class="muted" style="margin-top:.6rem;">Si el dato no está en el vault, el agente lo dice explícitamente
+              — nunca completa el vacío con una suposición.</p>
+            <p class="muted" style="margin-top:.6rem;">Todo corre desde la CLI: sin MCP, sin base de grafo formal, sin
+              índice vectorial en esta primera versión. <span class="mono" style="color:var(--text);">git clone</span> y
+              a trabajar.</p>
+          </div>
+          <div class="code-panel">rpa-cerebro/
+            ├── AGENTS.md <span class="c1"># orquesta la sesión</span>
+            ├── CLAUDE.md <span class="c3"># @AGENTS.md</span>
+            ├── vault/ <span class="c3"># el grafo (notas .md)</span>
+            │ ├── _templates/
+            │ ├── _inbox/ <span class="c3"># documentos sin procesar</span>
+            │ └── _staging/ <span class="c3"># propuestas sin revisar</span>
+            ├── .claude/
+            │ ├── skills/ <span class="c1"># método + lectura</span>
+            │ └── agents/ <span class="c2"># 5 subagentes</span>
+            └── .opencode/agent/ <span class="c2"># mismos 5, otro formato</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04b — ARCHIVO ORQUESTADOR -->
+    <section class="slide" id="s4b">
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">04</span><span>el archivo que orquesta todo</span></div>
+        <h2>La sesión principal también<br>necesita instrucciones.</h2>
+        <p class="lede">Los subagentes tienen su propio archivo. Pero nadie le decía a la
+          sesión principal —quien decide a cuál delegar— cómo funciona el
+          proyecto en conjunto. Ese es el trabajo de <span class="mono" style="color:var(--amber);">AGENTS.md</span>.
+        </p>
+        <div class="rule"></div>
+        <div class="grid2">
+          <div class="code-panel"><span class="c3"># AGENTS.md (raíz, formato abierto)</span>
+            <span class="c1">## Cuándo delegar a cada subagente</span>
+            | dice... | delega a |
+            |-------------------|--------------------|
+            | "procesa este doc" | ingestion-agent |
+            | pregunta directa | qa-agent |
+            | "quiero entender" | tutor-agent |
+            | "qué pasa si..." | simulation-agent |
+
+            <span class="c1">## Regla de oro</span>
+            Si no está en el vault, decirlo — nunca
+            completar con una suposición.
+          </div>
+          <div>
+            <div class="ledger">
+              <div class="ledger-row">
+                <div class="name">AGENTS.md</div>
+                <div class="desc">canónico. OpenCode lo lee de forma nativa al abrir el proyecto.</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">CLAUDE.md</div>
+                <div class="desc">un import: <span class="mono">@AGENTS.md</span>. Claude Code lo carga solo, sin
+                  duplicar contenido.</div>
+              </div>
+            </div>
+            <p class="muted" style="margin-top:1rem; font-size:.9rem;">Es el primer archivo a leer o editar si algo del
+              comportamiento
+              general no te convence — antes de tocar un subagente individual.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 — EL VAULT COMO GRAFO -->
+    <section class="slide" id="s5">
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">05</span><span>el vault como grafo</span></div>
+        <h2>Nueve tipos de nota.<br>Relaciones con encabezado fijo, no links sueltos.</h2>
+        <div class="rule"></div>
+        <div class="grid2">
+          <div style="display:flex; flex-wrap:wrap; gap:.6rem; align-content:flex-start;">
+            <span class="tag amber">Proceso</span>
+            <span class="tag">PasoDeProceso</span>
+            <span class="tag amber">ReglaDeNegocio</span>
+            <span class="tag">Sistema</span>
+            <span class="tag">CampoDeDato</span>
+            <span class="tag red">Excepcion</span>
+            <span class="tag">HistoriaDeUsuario</span>
+            <span class="tag teal">Robot</span>
+            <span class="tag">Documento</span>
+          </div>
+          <div class="code-panel"><span class="c3">---</span>
+            <span class="c1">tipo:</span> ReglaDeNegocio
+            <span class="c1">id:</span> RN-003
+            <span class="c1">confidence:</span> alta
+            <span class="c1">estado:</span> propuesto
+            <span class="c3">---</span>
+
+            <span class="c2"># RN-003 — Aprobación gerencial</span>
+
+            Si el monto supera $5.000.000, requiere
+            aprobación de un gerente.
+
+            <span class="c1">## Depende de</span>
+            - [[CampoDeDato - Monto factura]]
+
+            <span class="c1">## Excepciones conocidas</span>
+            - [[Excepcion - Monto ambiguo]]
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 — SKILLS -->
+    <section class="slide" id="s6">
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">06</span><span>las skills</span></div>
+        <h2>Método y política primero.<br>Lectura de documentos después.</h2>
+        <div class="rule"></div>
+        <div class="grid2">
+          <div>
+            <h3 style="color:var(--teal); margin-bottom:.3rem;">Método &amp; política</h3>
+            <div class="ledger">
+              <div class="ledger-row">
+                <div class="name">vault-conventions</div>
+                <div class="desc">esquema del grafo: tipos, frontmatter, relaciones</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">cite-sources</div>
+                <div class="desc">toda respuesta cita su nota; si no está, decirlo</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">ingestion-pipeline</div>
+                <div class="desc">orquesta la ingestión completa</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">socratic-method</div>
+                <div class="desc">preguntas guía en vez de respuesta directa</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">flow-simulation</div>
+                <div class="desc">recorre relaciones para "qué pasa si"</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">rpa-best-practices</div>
+                <div class="desc">patrones de industria, no de un proyecto</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 style="color:var(--amber); margin-bottom:.3rem;">Lectura de documentos</h3>
+            <div class="ledger">
+              <div class="ledger-row">
+                <div class="name">read-pdf</div>
+                <div class="desc">tablas fila por fila · detecta escaneos sin OCR</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">read-docx</div>
+                <div class="desc">jerarquía de encabezados · comentarios y cambios</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">read-xlsx</div>
+                <div class="desc">hoja por hoja · fila = registro individual</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">read-plaintext-notes</div>
+                <div class="desc">notas informales · confianza baja/media por defecto</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">read-automation<br>-anywhere-export</div>
+                <div class="desc">.atmx / .mbot / .aapkg — ver siguiente slide</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 — SUBAGENTES -->
+    <section class="slide" id="s7">
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">07</span><span>los subagentes</span></div>
+        <h2>Cinco roles. Cada uno con<br>permisos de escritura acotados.</h2>
+        <div class="rule"></div>
+        <div class="ledger">
+          <div class="ledger-row">
+            <div class="name" style="color:var(--teal);">ingestion-agent</div>
+            <div class="desc">Lee <span class="mono">vault/_inbox/</span> y propone notas.
+              <div class="sub">escribe solo en <span class="mono">vault/_staging/</span></div>
+            </div>
+          </div>
+          <div class="ledger-row">
+            <div class="name" style="color:var(--teal);">graph-writer-agent</div>
+            <div class="desc">Toma el staging aprobado y lo escribe al vault final.
+              <div class="sub">único que escribe en <span class="mono">vault/</span> completo</div>
+            </div>
+          </div>
+          <div class="ledger-row">
+            <div class="name" style="color:var(--amber);">qa-agent</div>
+            <div class="desc">Preguntas directas, respuesta concisa con cita.
+              <div class="sub">solo lectura</div>
+            </div>
+          </div>
+          <div class="ledger-row">
+            <div class="name" style="color:var(--amber);">tutor-agent</div>
+            <div class="desc">Modo socrático — preguntas guía, evalúa tu respuesta contra el vault.
+              <div class="sub">solo lectura</div>
+            </div>
+          </div>
+          <div class="ledger-row">
+            <div class="name" style="color:var(--amber);">simulation-agent</div>
+            <div class="desc">"Qué pasa si..." — recorre el grafo y muestra el camino.
+              <div class="sub">solo lectura</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 — AUTOMATION ANYWHERE -->
+    <section class="slide" id="s8">
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">08</span><span>fuente especial</span></div>
+        <h2>El export del bot manda<br>sobre "qué hace", no el manual.</h2>
+        <p class="lede">El bot es la fuente más confiable de qué pasa en realidad. Cuando
+          contradice al manual de negocio, el sistema no elige en silencio.</p>
+        <div class="rule"></div>
+        <div class="grid2">
+          <div>
+            <div class="ledger">
+              <div class="ledger-row">
+                <div class="name">.atmx / .mbot</div>
+                <div class="desc">Enterprise 10/11 — exportar antes como XML/TXT
+                  <div class="sub"><span class="mono">AAWorkbench.exe /export /sf: /df:</span></div>
+                </div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">.aapkg</div>
+                <div class="desc">Automation 360 — se pone tal cual en <span class="mono">_inbox/</span>
+                  <div class="sub">se descomprime e inspecciona, sin asumir esquema fijo</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="compare">
+            <div class="manual">
+              <div class="label">manual dice</div>
+              <div class="val">aprobación &gt; $5.000.000</div>
+            </div>
+            <div class="bot">
+              <div class="label">bot hace</div>
+              <div class="val">aprobación &gt; $4.500.000</div>
+            </div>
+            <div style="grid-column:1/-1; border-top:1px solid var(--line);">
+              <div class="label" style="padding:1rem 1.5rem 0;">→ discrepancia marcada, no resuelta en silencio</div>
+              <div style="padding:.4rem 1.5rem 1.2rem; color:var(--muted); font-size:.88rem;">las dos notas se proponen;
+                la revisión humana decide cuál es la vigente</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 — CLONAR Y USAR -->
+    <section class="slide" id="s9">
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">09</span><span>empezar</span></div>
+        <h2>Clonar el repo <em style="font-style:normal; color:var(--amber);">es</em><br>instalarlo. No hay paso extra.
+        </h2>
+        <div class="rule"></div>
+        <div class="grid2">
+          <div>
+            <div class="code-panel">git clone https://github.com/AND3SIL4/boots-understanding.git</div>
+            <div class="code-panel">cd repo</div>
+            <div class="code-panel"># listo — abre en Claude Code u OpenCode</div>
+            <p class="muted" style="margin-top:1.2rem; font-size:.92rem;">Nada que descargar aparte, nada que registrar
+              en un marketplace.
+              Los subagentes y skills se cargan solos al abrir la carpeta.</p>
+          </div>
+          <div>
+            <h3 style="color:var(--amber); margin-bottom:.5rem;">Antes de tu primera ingestión, revisa</h3>
+            <div class="ledger">
+              <div class="ledger-row">
+                <div class="name">nombre del proyecto</div>
+                <div class="desc">en README.md y AGENTS.md — sigue con el nombre temporal</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">vault/_templates/</div>
+                <div class="desc">solo si tu proceso necesita un tipo de nodo adicional</div>
+              </div>
+              <div class="ledger-row">
+                <div class="name">rpa-best-practices</div>
+                <div class="desc">amplíala si tu equipo tiene convenciones propias</div>
+              </div>
+            </div>
+            <p class="muted" style="margin-top:1rem; font-size:.85rem;">No hace falta borrar ni tocar nada más — <span
+                class="mono">_templates/</span>,
+              <span class="mono">_inbox/</span> y <span class="mono">_staging/</span> ya están listos y vacíos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 — FLUJO -->
+    <section class="slide" id="s10">
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">10</span><span>el flujo de uso</span></div>
+        <h2>De un pdf en la carpeta<br>a una respuesta citada.</h2>
+        <div class="rule"></div>
+        <div class="steps">
+          <div class="step">
+            <div>
+              <h3>Clonar el repo</h3>
+              <p><span class="mono">git clone</span> y abrir la carpeta en Claude Code u OpenCode. Sin paso de
+                instalación — <span class="mono">AGENTS.md</span>/<span class="mono">CLAUDE.md</span> dan contexto a la
+                sesión principal desde el primer momento.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Revisar antes de arrancar</h3>
+              <p>Nombre del proyecto en README/AGENTS.md, y si hace falta, ampliar <span
+                  class="mono">vault/_templates/</span> o <span class="mono">rpa-best-practices</span>. El resto ya está
+                listo.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Cargar los documentos crudos</h3>
+              <p>Manuales, fichas xlsx, notas — y si lo tienes, el export del bot (.aapkg, o .atmx/.mbot convertidos) —
+                todo a <span class="mono">vault/_inbox/</span>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Ingerir</h3>
+              <p><span class="mono">ingestion-agent</span> lee cada archivo con la skill adecuada y propone notas en
+                <span class="mono">vault/_staging/&lt;lote&gt;/</span>, sin tocar el vault final.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Revisar el staging</h3>
+              <p>Corriges lo que haga falta. Presta atención a discrepancias marcadas entre el bot y los manuales — es
+                la señal más valiosa.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Confirmar al vault final</h3>
+              <p><span class="mono">graph-writer-agent</span> mueve las notas aprobadas, marca <span
+                  class="mono">estado: verificado</span> y actualiza el overview del proyecto.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Consultar el conocimiento</h3>
+              <p>Pregunta directa → <span class="mono">qa-agent</span>. Entender a fondo → <span
+                  class="mono">tutor-agent</span>. "Qué pasa si..." → <span class="mono">simulation-agent</span>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 — REGLA DE ORO -->
+    <section class="slide" id="s11">
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">11</span><span>la regla que no se negocia</span></div>
+        <h2 style="max-width:780px;">Un "no lo sé" trazable es más seguro<br>que una respuesta inventada.</h2>
+        <p class="lede">Estos procesos suelen tocar pagos, RRHH o cumplimiento. El sistema
+          está diseñado para preferir el silencio sobre la invención en cualquier
+          punto donde el vault no tenga la respuesta.</p>
+        <div class="rule"></div>
+        <div class="grid3">
+          <div>
+            <div class="tag red" style="margin-bottom:.6rem;">nunca</div>
+            <p style="font-size:.95rem;">Completar un vacío del documento fuente con una suposición
+              presentada como hecho.</p>
+          </div>
+          <div>
+            <div class="tag amber" style="margin-bottom:.6rem;">siempre</div>
+            <p style="font-size:.95rem;">Citar la nota exacta que respalda cada afirmación, con su nivel
+              de confianza.</p>
+          </div>
+          <div>
+            <div class="tag teal" style="margin-bottom:.6rem;">ante la duda</div>
+            <p style="font-size:.95rem;">Marcar la discrepancia y dejar que la revisión humana decida,
+              nunca resolverla en silencio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 — CIERRE / ROADMAP -->
+    <section class="slide" id="s12">
+      <svg class="graph-deco" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" style="opacity:.35;">
+        <line x1="140" y1="620" x2="280" y2="540" />
+        <line x1="280" y1="540" x2="260" y2="680" />
+        <line x1="140" y1="620" x2="60" y2="500" />
+        <line x1="280" y1="540" x2="400" y2="600" />
+        <circle cx="140" cy="620" r="6" class="hi" />
+        <circle cx="280" cy="540" r="5" class="hi2" />
+        <circle cx="260" cy="680" r="5" />
+        <circle cx="60" cy="500" r="4" />
+        <circle cx="400" cy="600" r="5" />
+      </svg>
+      <div class="slide-inner">
+        <div class="kicker"><span class="n">12</span><span>hacia dónde va esto</span></div>
+        <h2>Esta es la versión mínima.<br>El diseño ya contempla más.</h2>
+        <div class="rule"></div>
+        <div class="grid2">
+          <div class="ledger">
+            <div class="ledger-row">
+              <div class="name">fase 0-1</div>
+              <div class="desc">vault + skills + subagentes — donde estás hoy</div>
+            </div>
+            <div class="ledger-row">
+              <div class="name">fase 2</div>
+              <div class="desc">servidor MCP: el motor se vuelve portable entre CLIs</div>
+            </div>
+            <div class="ledger-row">
+              <div class="name">fase 3</div>
+              <div class="desc">índice vectorial + backend de grafo formal al escalar</div>
+            </div>
+          </div>
+          <div>
+            <p style="font-size:1.05rem;">Gratis, open source, y pensado para crecer con lo que
+              realmente hagas falta en el siguiente proyecto legado que tengas
+              que soportar.</p>
+            <div class="rule" style="margin:1.4rem 0;"></div>
+            <p class="muted" style="font-size:.9rem;">Guía de referencia — vuelve a esta presentación cuando necesites
+              recordar un comando, un tipo de nota, o el orden del flujo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const deck = document.getElementById('deck');
+    const rail = document.getElementById('rail');
+    const hudCur = document.getElementById('hudCur');
+
+    slides.forEach((s, i) => {
+      const b = document.createElement('button');
+      b.setAttribute('aria-label', 'Ir a diapositiva ' + (i + 1));
+      b.addEventListener('click', () => s.scrollIntoView({ behavior: 'smooth' }));
+      rail.appendChild(b);
+    });
+    const dots = Array.from(rail.children);
+
+    function setActive(i) {
+      dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+      hudCur.textContent = String(i + 1).padStart(2, '0');
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          setActive(slides.indexOf(e.target));
+        }
+      });
+    }, { root: deck, threshold: 0.6 });
+    slides.forEach(s => io.observe(s));
+
+    function currentIndex() {
+      const idx = dots.findIndex(d => d.classList.contains('active'));
+      return idx === -1 ? 0 : idx;
+    }
+    function go(delta) {
+      const next = Math.min(slides.length - 1, Math.max(0, currentIndex() + delta));
+      slides[next].scrollIntoView({ behavior: 'smooth' });
+    }
+    document.getElementById('nextBtn').addEventListener('click', () => go(1));
+    document.getElementById('prevBtn').addEventListener('click', () => go(-1));
+
+    window.addEventListener('keydown', (e) => {
+      if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(1); }
+      if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); go(-1); }
+    });
+
+    setActive(0);
+  </script>
+
+</body>
+
+</html>
