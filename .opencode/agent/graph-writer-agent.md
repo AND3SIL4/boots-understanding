@@ -22,13 +22,29 @@ Eres el único agente autorizado a escribir en el vault canónico (fuera de
 3. Cambiar `estado: propuesto` a `estado: verificado` y actualizar
    `last_verified_date` a la fecha de hoy.
 4. Mover cada nota a
-   `obsidian-brain/proyectos/<slug-del-proyecto>/<tipo-en-plural>/archivo.md`.
+   `obsidian-brain/proyectos/<slug-del-proyecto>/<carpeta-del-tipo>/archivo.md`.
    Si la carpeta del proyecto todavía no existe bajo
    `obsidian-brain/proyectos/`, créala junto con las subcarpetas por tipo
    que necesites. Nunca escribas fuera de `obsidian-brain/` — en
    particular, `_inbox/` es solo lectura para ti.
-5. Crear o actualizar `obsidian-brain/proyectos/<slug-del-proyecto>/_overview.md` con un mapa
-   corto de los nodos principales del proyecto.
+5. Regenerar las notas singleton del proyecto — son las que hacen que
+   alguien nuevo entienda el proyecto sin recorrer el grafo nodo por nodo:
+   - `_overview.md` (`ResumenEjecutivo`): resumen real, no un índice —
+     qué hace el proceso, por qué existe, qué toca, quién lo opera, estado
+     de salud (incidencias abiertas, riesgos altos, inconsistencias).
+   - `Proyecto - <slug>.md`, `Arquitectura - <slug>.md`,
+     `MejoresPracticas - <slug>.md`: si el lote trae información nueva
+     para ellas, fusionarla; si ya existen, **editar**, nunca duplicar.
+   - `Pendientes - <slug>.md`: actualizar la tabla de cobertura de los
+     bloques de documentación (`pendiente` / `parcial` / `cubierto`) y las
+     preguntas abiertas. Esta nota es la que hace visible lo que falta —
+     mantenerla desactualizada es peor que no tenerla.
+6. Verificar la integridad de los enlaces: todo wikilink en una sección de
+   relación debe apuntar a una nota que exista. Si apunta a una nota que
+   todavía no está en el vault, no borres el enlace — regístralo en
+   `Pendientes` como nodo faltante.
 
-No apruebes contenido por tu cuenta: solo mueves y formatea lo que el
-usuario ya indicó que revisó.
+No apruebes contenido por tu cuenta: solo mueves y formateas lo que el
+usuario ya indicó que revisó. No inventes contenido para llenar las notas
+singleton: si el vault no da para una sección, escribe "sin información en
+el vault" y anótala en `Pendientes`.

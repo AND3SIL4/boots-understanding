@@ -18,16 +18,12 @@ para el diseño completo hacia el que esto evoluciona).
 │   ├── _staging/              ← notas propuestas por ingestión, pendientes de revisión
 │   └── proyectos/             ← el grafo verificado, una carpeta por proyecto RPA
 │       └── <proyecto>/
-│           ├── procesos/
-│           ├── pasos/
-│           ├── reglas/
-│           ├── sistemas/
-│           ├── campos/
-│           ├── excepciones/
-│           ├── historias/
-│           ├── robots/
-│           ├── documentos/
-│           └── _overview.md   ← mapa corto autogenerado del proyecto
+│           ├── _overview.md   ← resumen ejecutivo (autogenerado)
+│           ├── Proyecto - <slug>.md
+│           ├── Arquitectura - <slug>.md
+│           ├── MejoresPracticas - <slug>.md
+│           ├── Pendientes - <slug>.md
+│           └── <carpeta-por-tipo>/  ← procesos/ pasos/ reglas/ ... (26 tipos)
 ├── .claude/
 │   ├── skills/                ← skills genéricas (formato Agent Skills, estándar abierto)
 │   └── agents/                ← subagentes en formato Claude Code
@@ -42,6 +38,52 @@ duplicar nada. Los subagentes sí están duplicados porque el formato de
 ubicación/frontmatter difiere entre Claude Code (`.claude/agents/`) y
 OpenCode (`.opencode/agent/`) — el contenido del prompt es equivalente en
 ambos.
+
+## Qué se documenta
+
+El esquema cubre 37 bloques de documentación, repartidos en 26 tipos de
+nodo multi-instancia (el grafo) y 5 notas singleton por proyecto (lo
+narrativo). El detalle vive en la skill `vault-conventions`; este es el
+mapa de qué bloque cae en qué tipo:
+
+| Bloque de documentación | Dónde vive |
+| --- | --- |
+| Resumen ejecutivo | `_overview.md` (singleton) |
+| Proyecto · Alcance y objetivos · Contexto · Beneficios | `Proyecto` (singleton) |
+| Arquitectura | `Arquitectura` (singleton) |
+| Mejores prácticas | `MejoresPracticas` (singleton) |
+| Pendientes de documentación | `Pendientes` (singleton) |
+| Actores y roles | `Actor` |
+| Glosario | `Termino` |
+| Cronología | `Hito` |
+| Decisiones | `Decision` |
+| Plataforma RPA · SAP · Base de datos · Aplicaciones y servicios | `Sistema` (campo `categoria`) |
+| Red y ambientes | `Ambiente` |
+| Seguridad y accesos | `Acceso` |
+| Proceso de negocio | `Proceso` |
+| Flujo de trabajo | `PasoDeProceso` |
+| Historias de usuario | `HistoriaDeUsuario` |
+| Reglas de negocio | `ReglaDeNegocio` |
+| Validaciones | `Validacion` |
+| Variables y parámetros | `Parametro` |
+| Archivos e insumos | `Insumo` |
+| Salidas y reportes | `Salida` |
+| Correos y notificaciones | `Notificacion` |
+| Excepciones | `Excepcion` |
+| Riesgos | `Riesgo` |
+| Incidencias y stoppers | `Incidencia` |
+| KPIs y SLAs | `Indicador` |
+| Pruebas UAT realizadas | `PruebaUAT` |
+| Inconsistencias detectadas | `Inconsistencia` |
+| Preguntas frecuentes | `PreguntaFrecuente` |
+| Referencias · Anexos | `Documento` |
+| Dependencias | sección de relación `## Depende de` (no es un tipo) |
+
+Dos notas hacen el trabajo que un grafo solo no hace: `_overview.md` es la
+entrada de 5 minutos para quien llega nuevo, y `Pendientes` lleva la
+cuenta de qué bloques siguen sin cubrir y qué preguntas hay que hacerle a
+un humano. Esa segunda es la que convierte la regla de oro en algo
+accionable en vez de una excusa para dejar huecos.
 
 ## Las 6 skills genéricas
 

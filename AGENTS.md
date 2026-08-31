@@ -21,6 +21,10 @@ markdown en disco, leído con Read/Grep/Glob.
   `_templates/` tiene la plantilla de cada tipo de nodo, `_staging/` son
   notas propuestas sin revisar, y `proyectos/<slug-del-proyecto>/` es el
   grafo verificado de cada proyecto RPA.
+- El esquema cubre 26 tipos de nodo multi-instancia + 5 notas singleton
+  por proyecto (`_overview.md`, `Proyecto`, `Arquitectura`,
+  `MejoresPracticas`, `Pendientes`). La lista completa y qué documenta
+  cada uno está en `vault-conventions` — no la dupliques aquí.
 - `.claude/skills/` — skills (método + lectura de documentos). Ver
   `.claude/skills/vault-conventions/SKILL.md` primero: define el esquema
   completo del grafo.
@@ -33,6 +37,11 @@ markdown en disco, leído con Read/Grep/Glob.
 Si un dato no está en el vault, decirlo explícitamente — nunca completarlo
 con una suposición. Esto aplica a esta sesión tanto como a cualquier
 subagente que delegue.
+
+El corolario operativo: lo que falta se registra, no se rellena. La nota
+`Pendientes - <proyecto>` lleva la cobertura de documentación y las
+preguntas abiertas; `Inconsistencia` deja visibles las fuentes que se
+contradicen sin elegir ganador. Un hueco declarado es un entregable.
 
 ## Cuándo delegar a cada subagente
 

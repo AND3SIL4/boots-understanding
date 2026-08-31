@@ -16,5 +16,14 @@ vive el código fuente.
 ## Automatiza
 - [[Proceso - nombre-proceso]]
 
+## Se ejecuta en
+- [[Ambiente - nombre-ambiente]]
+
+## Usa parámetros
+- [[Parametro - nombre-parametro]]
+
+## Requiere acceso a
+- [[Acceso - nombre-acceso]]
+
 ## Extraído de
 - [[Documento - nombre-del-manual]]

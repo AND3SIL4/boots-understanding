@@ -14,5 +14,8 @@ Qué representa este dato, formato esperado, de dónde viene.
 ## Usado por
 - [[ReglaDeNegocio - id-regla]]
 
+## Validado por
+- [[Validacion - nombre-validacion]]
+
 ## Extraído de
 - [[Documento - nombre-del-manual]]
