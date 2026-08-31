@@ -1,6 +1,6 @@
 ---
 name: read-pdf
-description: "Use when a raw document in vault/_inbox/ is a .pdf. Extracts text, tables, and flags scanned/image-only content that needs OCR, so ingestion-pipeline can process it like any other source document."
+description: "Use when a raw document in _inbox/ is a .pdf. Extracts text, tables, and flags scanned/image-only content that needs OCR, so ingestion-pipeline can process it like any other source document."
 ---
 
 # Leer documentos PDF

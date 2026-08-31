@@ -602,7 +602,7 @@
           <span class="arrow">→</span>
           <span class="box">skills de lectura</span>
           <span class="arrow">→</span>
-          <span class="box" style="border-color:var(--amber-dim); color:var(--amber);">vault (grafo en .md)</span>
+          <span class="box" style="border-color:var(--amber-dim); color:var(--amber);">obsidian-brain (grafo en .md)</span>
           <span class="arrow">→</span>
           <span class="box" style="border-color:var(--teal-dim); color:var(--teal);">subagentes de consulta</span>
           <span class="arrow">→</span>
@@ -631,10 +631,11 @@
           <div class="code-panel">rpa-cerebro/
             ├── AGENTS.md <span class="c1"># orquesta la sesión</span>
             ├── CLAUDE.md <span class="c3"># @AGENTS.md</span>
-            ├── vault/ <span class="c3"># el grafo (notas .md)</span>
+            ├── _inbox/ <span class="c3"># insumos crudos, cualquier formato</span>
+            ├── obsidian-brain/ <span class="c3"># el vault (solo .md)</span>
             │ ├── _templates/
-            │ ├── _inbox/ <span class="c3"># documentos sin procesar</span>
-            │ └── _staging/ <span class="c3"># propuestas sin revisar</span>
+            │ ├── _staging/ <span class="c3"># propuestas sin revisar</span>
+            │ └── proyectos/ <span class="c3"># el grafo, uno por proyecto</span>
             ├── .claude/
             │ ├── skills/ <span class="c1"># método + lectura</span>
             │ └── agents/ <span class="c2"># 5 subagentes</span>
@@ -801,14 +802,14 @@
         <div class="ledger">
           <div class="ledger-row">
             <div class="name" style="color:var(--teal);">ingestion-agent</div>
-            <div class="desc">Lee <span class="mono">vault/_inbox/</span> y propone notas.
-              <div class="sub">escribe solo en <span class="mono">vault/_staging/</span></div>
+            <div class="desc">Lee <span class="mono">_inbox/</span> y propone notas.
+              <div class="sub">escribe solo en <span class="mono">obsidian-brain/_staging/</span></div>
             </div>
           </div>
           <div class="ledger-row">
             <div class="name" style="color:var(--teal);">graph-writer-agent</div>
             <div class="desc">Toma el staging aprobado y lo escribe al vault final.
-              <div class="sub">único que escribe en <span class="mono">vault/</span> completo</div>
+              <div class="sub">único que escribe en <span class="mono">obsidian-brain/</span> completo</div>
             </div>
           </div>
           <div class="ledger-row">
@@ -901,7 +902,7 @@
                 <div class="desc">en README.md y AGENTS.md — sigue con el nombre temporal</div>
               </div>
               <div class="ledger-row">
-                <div class="name">vault/_templates/</div>
+                <div class="name">obsidian-brain/_templates/</div>
                 <div class="desc">solo si tu proceso necesita un tipo de nodo adicional</div>
               </div>
               <div class="ledger-row">
@@ -937,7 +938,7 @@
             <div>
               <h3>Revisar antes de arrancar</h3>
               <p>Nombre del proyecto en README/AGENTS.md, y si hace falta, ampliar <span
-                  class="mono">vault/_templates/</span> o <span class="mono">rpa-best-practices</span>. El resto ya está
+                  class="mono">obsidian-brain/_templates/</span> o <span class="mono">rpa-best-practices</span>. El resto ya está
                 listo.</p>
             </div>
           </div>
@@ -945,14 +946,14 @@
             <div>
               <h3>Cargar los documentos crudos</h3>
               <p>Manuales, fichas xlsx, notas — y si lo tienes, el export del bot (.aapkg, o .atmx/.mbot convertidos) —
-                todo a <span class="mono">vault/_inbox/</span>.</p>
+                todo a <span class="mono">_inbox/</span>.</p>
             </div>
           </div>
           <div class="step">
             <div>
               <h3>Ingerir</h3>
               <p><span class="mono">ingestion-agent</span> lee cada archivo con la skill adecuada y propone notas en
-                <span class="mono">vault/_staging/&lt;lote&gt;/</span>, sin tocar el vault final.
+                <span class="mono">obsidian-brain/_staging/&lt;lote&gt;/</span>, sin tocar el vault final.
               </p>
             </div>
           </div>

@@ -8,7 +8,9 @@ last_verified_date: YYYY-MM-DD
 
 # DOC-XXX — Nombre del archivo original
 
-- **Archivo original:** ruta o nombre del PDF/docx/xlsx/nota
+- **Archivo original:** ruta relativa dentro de `_inbox/`
+  (ej. `_inbox/manual-conciliacion.pdf`, `_inbox/export/manifest.json`).
+  El archivo se queda en `_inbox/`, nunca se copia al vault.
 - **Tipo:** manual / ficha técnica / correo / nota / especificación
 - **Fecha del documento:** si se conoce
 

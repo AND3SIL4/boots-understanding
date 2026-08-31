@@ -9,22 +9,25 @@ para el diseño completo hacia el que esto evoluciona).
 ## Estructura
 
 ```
-rpa-cerebro/
-├── vault/                     ← la base de conocimiento (el grafo)
+<raíz donde se ejecutan los agentes>/
+├── _inbox/                    ← insumos crudos, CUALQUIER tipo de archivo
+│   ├── export/                ← exports de Automation Anywhere (manifest.json + fuente)
+│   └── ...                    ← pdf, docx, xlsx, csv, md, txt, video, audio, imágenes...
+├── obsidian-brain/            ← EL vault de Obsidian (un solo vault, solo markdown)
 │   ├── _templates/            ← plantilla por cada tipo de nodo
-│   ├── _inbox/                ← documentos crudos sin procesar (pdf, docx, xlsx, md...)
 │   ├── _staging/              ← notas propuestas por ingestión, pendientes de revisión
-│   └── <proyecto>/            ← notas verificadas, una carpeta por proyecto RPA
-│       ├── procesos/
-│       ├── pasos/
-│       ├── reglas/
-│       ├── sistemas/
-│       ├── campos/
-│       ├── excepciones/
-│       ├── historias/
-│       ├── robots/
-│       ├── documentos/
-│       └── _overview.md       ← mapa corto autogenerado del proyecto
+│   └── proyectos/             ← el grafo verificado, una carpeta por proyecto RPA
+│       └── <proyecto>/
+│           ├── procesos/
+│           ├── pasos/
+│           ├── reglas/
+│           ├── sistemas/
+│           ├── campos/
+│           ├── excepciones/
+│           ├── historias/
+│           ├── robots/
+│           ├── documentos/
+│           └── _overview.md   ← mapa corto autogenerado del proyecto
 ├── .claude/
 │   ├── skills/                ← skills genéricas (formato Agent Skills, estándar abierto)
 │   └── agents/                ← subagentes en formato Claude Code
@@ -55,8 +58,8 @@ ambos.
 
 | Subagente            | Hace qué                                          | Puede escribir en      |
 | -------------------- | ------------------------------------------------- | ---------------------- |
-| `ingestion-agent`    | Lee `vault/_inbox/` → propone notas               | solo `vault/_staging/` |
-| `graph-writer-agent` | Toma staging aprobado → lo escribe al vault final | `vault/` completo      |
+| `ingestion-agent`    | Lee `_inbox/` → propone notas               | solo `obsidian-brain/_staging/` |
+| `graph-writer-agent` | Toma staging aprobado → lo escribe al vault final | `obsidian-brain/` completo      |
 | `qa-agent`           | Responde preguntas directas (usuario de negocio)  | nada (solo lectura)    |
 | `tutor-agent`        | Modo socrático (usuario técnico)                  | nada (solo lectura)    |
 | `simulation-agent`   | Simulaciones "qué pasa si"                        | nada (solo lectura)    |
@@ -65,12 +68,12 @@ ambos.
 
 **1. Ingerir un documento nuevo**
 
-1. Copia el archivo (pdf/docx/xlsx/md/txt) a `vault/_inbox/`.
+1. Copia el archivo (pdf/docx/xlsx/md/txt) a `_inbox/`.
 2. En tu CLI: pide al agente que lo procese (ej. "procesa el manual que
    acabo de agregar") — se delega a `ingestion-agent`, que propone notas en
-   `vault/_staging/<lote>/`.
+   `obsidian-brain/_staging/<lote>/`.
 3. Revisa a mano (o pídele a Claude/OpenCode que te resuma) las notas
-   propuestas en `vault/_staging/<lote>/`. Edita lo que haga falta.
+   propuestas en `obsidian-brain/_staging/<lote>/`. Edita lo que haga falta.
 4. Pide que se confirmen ("ya revisé, agrégalas al vault") — se delega a
    `graph-writer-agent`, que las mueve a su ubicación final y actualiza
    `_overview.md`.
@@ -83,7 +86,7 @@ ambos.
 
 **3. Explorar visualmente**
 
-Abre la carpeta `vault/` como vault en la app de Obsidian para ver el grafo
+Abre la carpeta `obsidian-brain/` como vault en la app de Obsidian para ver el grafo
 de notas y navegar los wikilinks directamente.
 
 ## Fuera de alcance por ahora

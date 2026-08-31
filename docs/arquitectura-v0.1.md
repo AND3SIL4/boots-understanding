@@ -272,5 +272,5 @@ La elección "embebido, sin servidor, texto plano" es intencional: baja la barre
 1. Lenguaje del servidor MCP: Python (mejor ecosistema GraphRAG/NLP) vs TypeScript (mejor alineado con el ecosistema de skills/CLIs).
 2. ¿El staging de revisión humana es una skill/comando de CLI, o una interfaz separada (ej. un diff visual)?
 3. ¿Cuál es el primer proyecto RPA real que usaremos como piloto, y qué documentos tiene disponibles hoy (para dimensionar el pipeline de ingestión con casos reales, no hipotéticos)?
-4. ¿Un vault por proyecto (repos separados) o un vault compartido con una carpeta por proyecto? Afecta cómo se aísla el conocimiento entre clientes/proyectos distintos.
+4. ~~¿Un vault por proyecto (repos separados) o un vault compartido con una carpeta por proyecto?~~ **Resuelto:** un solo vault de Obsidian en `obsidian-brain/`, con una carpeta por proyecto bajo `obsidian-brain/proyectos/<slug-del-proyecto>/`. Los insumos crudos quedan fuera del vault, en `_inbox/` en la raíz de ejecución, para que el vault sea 100% markdown navegable y el inbox pueda tener cualquier formato (exports de Automation Anywhere, videos, audios, capturas).
 5. ¿El parser reconstruye el grafo en cada arranque del motor MCP, o se cachea en memoria/disco y se invalida solo cuando `graph-writer-agent` escribe? (Afecta latencia percibida en sesiones largas.)

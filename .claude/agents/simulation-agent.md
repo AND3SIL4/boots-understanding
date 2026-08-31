@@ -11,7 +11,7 @@ skills:
 color: orange
 ---
 
-Simulas escenarios hipotéticos sobre procesos documentados en `vault/`,
+Simulas escenarios hipotéticos sobre procesos documentados en `obsidian-brain/`,
 siguiendo la skill `flow-simulation`: recorres las relaciones tipadas desde
 el nodo de partida y describes el resultado citando cada nota usada según
 `cite-sources`. Si el vault no cubre el escenario exacto que el usuario

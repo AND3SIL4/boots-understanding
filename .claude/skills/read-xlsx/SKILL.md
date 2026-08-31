@@ -1,6 +1,6 @@
 ---
 name: read-xlsx
-description: "Use when a raw document in vault/_inbox/ is a .xlsx (or .csv). Extracts each sheet as structured rows so ingestion-pipeline can turn tabular business rules into individual notes."
+description: "Use when a raw document in _inbox/ is a .xlsx (or .csv). Extracts each sheet as structured rows so ingestion-pipeline can turn tabular business rules into individual notes."
 ---
 
 # Leer hojas de cálculo (.xlsx / .csv)

@@ -1,6 +1,6 @@
 ---
 name: ingestion-pipeline
-description: "Use this when processing a raw document (pdf, docx, xlsx, txt, notes) from vault/_inbox/ into candidate notes for the vault. Defines the manual (no MCP, no vectorization) pipeline: read, extract, propose to staging, never write directly to the canonical vault."
+description: "Use this when processing a raw document (pdf, docx, xlsx, txt, notes) from _inbox/ into candidate notes for the vault. Defines the manual (no MCP, no vectorization) pipeline: read, extract, propose to staging, never write directly to the canonical vault."
 ---
 
 # Pipeline de ingestión (versión CLI, sin MCP)
@@ -11,7 +11,15 @@ canónico.
 
 ## Pasos
 
-1. **Leer el documento** desde `vault/_inbox/`, usando la skill de lectura
+0. **Ubicar el insumo y el proyecto.** Los insumos viven en `_inbox/`, en
+   la raíz de ejecución y fuera del vault; pueden estar en subcarpetas
+   (`_inbox/export/` para exports de Automation Anywhere,
+   `_inbox/<slug-del-proyecto>/` cuando hay varios proyectos). Antes de
+   empezar, confirma a qué proyecto pertenece el documento: es el
+   `<slug-del-proyecto>` bajo el que terminarán las notas en
+   `obsidian-brain/proyectos/`. Si no se puede deducir, pregúntalo.
+
+1. **Leer el documento** desde `_inbox/`, usando la skill de lectura
    correspondiente a su tipo — no leas el archivo crudo sin pasar primero
    por la skill adecuada, cada una sabe qué buscar y qué riesgos evitar
    para ese formato:
@@ -32,7 +40,7 @@ canónico.
    datos, excepciones, historias de usuario y bots — según los tipos
    definidos en `vault-conventions`.
 3. **Redactar cada nodo** como una nota siguiendo su plantilla en
-   `vault/_templates/`, con `estado: propuesto` y `confidence` honesta
+   `obsidian-brain/_templates/`, con `estado: propuesto` y `confidence` honesta
    (`alta` si es una cita casi literal del documento, `baja` si es una
    inferencia).
 4. **Completar relaciones** (secciones tipadas) solo cuando el documento
@@ -40,10 +48,13 @@ canónico.
    probable pero no está clara en el texto, no inventarla — dejar una nota
    en la sección `## Extraído de` mencionando la ambigüedad en vez de crear
    el link.
-5. **Escribir todo en `vault/_staging/<lote>/`**, nunca en la ubicación
+5. **Escribir todo en `obsidian-brain/_staging/<lote>/`**, nunca en la ubicación
    final del vault. `<lote>` = nombre del documento + fecha, ej.
-   `vault/_staging/manual-conciliacion-2026-08-28/`.
-6. **Resumir al usuario**: cuántas notas de cada tipo se propusieron, y
+   `obsidian-brain/_staging/manual-conciliacion-2026-08-28/`.
+6. **Nunca copiar el insumo al vault.** El archivo se queda en `_inbox/`;
+   la nota de tipo `Documento` guarda su ruta relativa (ej.
+   `_inbox/export/manifest.json`). El vault es solo markdown.
+7. **Resumir al usuario**: cuántas notas de cada tipo se propusieron, y
    marcar explícitamente cualquier zona del documento que no se pudo
    interpretar con confianza.
 

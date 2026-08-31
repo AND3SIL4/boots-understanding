@@ -1,6 +1,6 @@
 ---
 name: read-docx
-description: "Use when a raw document in vault/_inbox/ is a .docx. Extracts headings, paragraphs, tables, and comments/tracked changes so ingestion-pipeline can process it like any other source document."
+description: "Use when a raw document in _inbox/ is a .docx. Extracts headings, paragraphs, tables, and comments/tracked changes so ingestion-pipeline can process it like any other source document."
 ---
 
 # Leer documentos Word (.docx)

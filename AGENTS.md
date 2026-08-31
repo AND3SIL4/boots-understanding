@@ -7,16 +7,20 @@ RPA, contiene las reglas de cómo esta sesión debe delegar y comportarse.
 
 ## Qué es este repo
 
-Un vault de Obsidian (`vault/`) usado como grafo de conocimiento sobre
+Un vault de Obsidian (`obsidian-brain/`) usado como grafo de conocimiento sobre
 procesos RPA, más un conjunto de subagentes y skills que lo leen, lo
 completan y lo consultan. No hay servidor MCP ni base de datos: todo es
 markdown en disco, leído con Read/Grep/Glob.
 
 ## Dónde está cada cosa
 
-- `vault/` — el grafo (notas `.md`). `_templates/` tiene la plantilla de
-  cada tipo de nodo. `_inbox/` es donde el usuario deja documentos crudos.
-  `_staging/` son notas propuestas, sin revisar.
+- `_inbox/` — en la raíz, FUERA del vault. Ahí deja el usuario los insumos
+  crudos, de cualquier tipo: pdf, docx, xlsx, csv, txt, md, exports de
+  Automation Anywhere (`_inbox/export/`), videos, audios, capturas.
+- `obsidian-brain/` — el vault de Obsidian, uno solo, solo markdown.
+  `_templates/` tiene la plantilla de cada tipo de nodo, `_staging/` son
+  notas propuestas sin revisar, y `proyectos/<slug-del-proyecto>/` es el
+  grafo verificado de cada proyecto RPA.
 - `.claude/skills/` — skills (método + lectura de documentos). Ver
   `.claude/skills/vault-conventions/SKILL.md` primero: define el esquema
   completo del grafo.
@@ -46,7 +50,12 @@ sesión principal sin pasar por `qa-agent`/`tutor-agent`/`simulation-agent`
 
 ## Flujo esperado
 
-`_inbox` → `ingestion-agent` → `_staging` → revisión humana →
-`graph-writer-agent` → vault final → consulta.
+`_inbox/` → `ingestion-agent` → `obsidian-brain/_staging/` → revisión
+humana → `graph-writer-agent` → `obsidian-brain/proyectos/<proyecto>/` →
+consulta.
+
+Los insumos nunca entran al vault: se quedan en `_inbox/` y las notas los
+referencian. Así el vault queda 100% markdown navegable en Obsidian y el
+inbox puede tener cualquier formato.
 
 Ver el README para el paso a paso completo con ejemplos.
