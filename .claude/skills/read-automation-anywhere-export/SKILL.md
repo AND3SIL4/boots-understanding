@@ -1,6 +1,6 @@
 ---
 name: read-automation-anywhere-export
-description: "Use when a file in vault/_inbox/ is an Automation Anywhere bot export — .atmx, .mbot, .aapkg, or an XML/TXT export already converted from one of those. Extracts the bot's actual technical logic (variables, action sequence, error handling, dependencies) so it can be turned into vault notes, same as any manual — but this source is the ground truth for 'qué hace el bot realmente', no lo que dice el manual."
+description: "Use when a file in _inbox/ is an Automation Anywhere bot export — .atmx, .mbot, .aapkg, or an XML/TXT export already converted from one of those. Extracts the bot's actual technical logic (variables, action sequence, error handling, dependencies) so it can be turned into vault notes, same as any manual — but this source is the ground truth for 'qué hace el bot realmente', no lo que dice el manual."
 ---
 
 # Leer exports de bots de Automation Anywhere
@@ -9,7 +9,7 @@ Esta es la fuente más confiable de qué hace el bot **en realidad** — a
 diferencia de un manual, que describe lo que se supone que debería hacer.
 Cuando ambas fuentes existen para el mismo proceso, este export tiene
 prioridad para responder "qué hace el bot", y el manual tiene prioridad
-para responder "por qué" (la intención de negocio). Las carpetas siempre se van a encontrar en la siguiente ubicación `vault/_inbox/export` dentro de export encontraras todo lo relacionado a export del asistente digital, esto incluye un archivo llamado `manifest.json` el cuál usarás como indicé, y también los las carpetas y archivos que contienen el código fuente
+para responder "por qué" (la intención de negocio). Las carpetas siempre se van a encontrar en la siguiente ubicación `_inbox/export` dentro de export encontraras todo lo relacionado a export del asistente digital, esto incluye un archivo llamado `manifest.json` el cuál usarás como indicé, y también los las carpetas y archivos que contienen el código fuente
 
 ## Formatos que puedes encontrar
 

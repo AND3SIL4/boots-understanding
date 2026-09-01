@@ -20,6 +20,24 @@ Qué hace este paso concretamente.
 ## Interactúa con
 - [[Sistema - nombre-sistema]]
 
+## Aplica validación
+- [[Validacion - nombre-validacion]]
+
+## Ejecutado por
+- [[Actor - nombre-rol]]
+
+## Consume
+- [[Insumo - nombre-insumo]]
+
+## Produce
+- [[Salida - nombre-salida]]
+
+## Notifica a
+- [[Notificacion - nombre-notificacion]]
+
+## Requiere acceso a
+- [[Acceso - nombre-acceso]]
+
 ## Excepciones conocidas
 - [[Excepcion - nombre-excepcion]]
 

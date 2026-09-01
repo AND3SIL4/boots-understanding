@@ -17,5 +17,8 @@ Como <rol>, quiero <acción>, para <beneficio>.
 ## Implementada por
 - [[PasoDeProceso - nombre-paso]]
 
+## Verificada por
+- [[PruebaUAT - nombre-caso]]
+
 ## Extraído de
 - [[Documento - nombre-del-manual]]
