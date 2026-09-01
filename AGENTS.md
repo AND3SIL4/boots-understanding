@@ -47,7 +47,7 @@ contradicen sin elegir ganador. Un hueco declarado es un entregable.
 
 | El usuario dice algo como...                              | Delegar a            |
 | --------------------------------------------------------- | -------------------- |
-| "procesa este documento", "ingiere lo que hay en \_inbox" | `ingestion-agent`    |
+| "procesa este documento", "ingiere lo que hay en \_inbox", "ingiere todo el proyecto" | `ingestion-agent`    |
 | "ya revisé el staging, agrégalo al vault"                 | `graph-writer-agent` |
 | Una pregunta directa sobre el proceso                     | `qa-agent`           |
 | "quiero entender esto", "enséñame"                        | `tutor-agent`        |
@@ -67,8 +67,19 @@ comando: una pregunta directa se delega a `qa-agent` sin más.
 ## Flujo esperado
 
 `_inbox/` → `ingestion-agent` → `obsidian-brain/_staging/` → revisión
-humana → `graph-writer-agent` → `obsidian-brain/proyectos/<proyecto>/` →
-consulta.
+humana → `graph-writer-agent` →
+`obsidian-brain/proyectos/<proyecto>/documentacion/` → consulta.
+
+La ingestión acepta un archivo, un lote, o la raíz completa de un proyecto
+(`_inbox/<slug>/`). En ese último caso el orden no es negociable — export
+de Automation Anywhere, luego DDL, luego documentación de negocio, luego el
+resto — y hay archivos que ni se abren (videos, `.zip`, carpetas `dml*`,
+capturas dentro del export). El detalle vive en `ingestion-pipeline`.
+
+El proyecto debe existir antes de ingerir: la ingestión escribe bajo
+`proyectos/<slug>/documentacion/` y si esa carpeta no existe lo informa en
+vez de crearla. Las hermanas (`control-cambios/`, `desarrollo/`,
+`reuniones/`, `soporte/`) son trabajo humano y ningún agente escribe ahí.
 
 Los insumos nunca entran al vault: se quedan en `_inbox/` y las notas los
 referencian. Así el vault queda 100% markdown navegable en Obsidian y el

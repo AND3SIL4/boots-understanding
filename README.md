@@ -110,7 +110,7 @@ accionable en vez de una excusa para dejar huecos.
 
 | Comando | Delega en | Qué hace |
 | --- | --- | --- |
-| `/ingest <ruta-en-_inbox> [proyecto]` | `ingestion-agent` | Procesa un documento crudo y propone notas en `_staging/` |
+| `/ingest <ruta-en-_inbox> [proyecto]` | `ingestion-agent` | Procesa un documento crudo — o la raíz completa de un proyecto — y propone notas en `_staging/` |
 | `/commit <lote> [proyecto]` | `graph-writer-agent` | Escribe un lote ya revisado al vault canónico |
 | `/aprender <tema>` | `tutor-agent` | Sesión socrática sobre un proceso documentado |
 | `/simular <escenario>` | `simulation-agent` | Recorre el grafo para un caso hipotético |
@@ -138,6 +138,32 @@ lista las opciones y pregunta en vez de elegir por ti.
 4. Pide que se confirmen ("ya revisé, agrégalas al vault") — se delega a
    `graph-writer-agent`, que las mueve a su ubicación final y actualiza
    `_overview.md`.
+
+**1b. Ingerir un proyecto completo de una sola pasada**
+
+Si en vez de un archivo le pasas la raíz del proyecto
+(`/ingest _inbox/<slug>/`), la ingestión recorre todo el árbol en una
+corrida. Tres cosas cambian respecto a ingerir archivo por archivo:
+
+- **Hay un orden de precedencia**, y no es negociable: primero el export de
+  Automation Anywhere (qué hace el bot *realmente*), después el DDL de la
+  base de datos (tablas y campos reales), después la documentación
+  funcional y de negocio (el *porqué*), y de último logs y transcripciones
+  como contexto. Cuando un nivel inferior contradice a uno superior, queda
+  una nota `Inconsistencia` con ambas citas — nadie elige ganador en
+  silencio.
+- **Hay archivos que ni se abren**: videos y audios, `.zip` y demás
+  comprimidos, todo lo que cuelgue de una carpeta `dml*` (de la base de
+  datos solo interesa el DDL) y las capturas de pantalla dentro del export
+  (`*Metadata/*.png`). Se cuentan y se reportan en el `_INFORME.md` del
+  lote, no se esconden.
+- **El proyecto tiene que existir antes.** La ingestión escribe bajo
+  `obsidian-brain/proyectos/<slug>/documentacion/`; si esa carpeta no
+  existe, te lo informa y se detiene en vez de crearla. Créalo primero con
+  `/nuevo-proyecto <slug>`.
+
+Antes de leer el primer archivo verás el inventario del árbol — qué se
+procesa en cada nivel y qué se omite por cuál regla — para confirmar.
 
 **2. Consultar el conocimiento**
 

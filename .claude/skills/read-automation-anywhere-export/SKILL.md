@@ -9,7 +9,25 @@ Esta es la fuente más confiable de qué hace el bot **en realidad** — a
 diferencia de un manual, que describe lo que se supone que debería hacer.
 Cuando ambas fuentes existen para el mismo proceso, este export tiene
 prioridad para responder "qué hace el bot", y el manual tiene prioridad
-para responder "por qué" (la intención de negocio). Las carpetas siempre se van a encontrar en la siguiente ubicación `_inbox/export` dentro de export encontraras todo lo relacionado a export del asistente digital, esto incluye un archivo llamado `manifest.json` el cuál usarás como indicé, y también los las carpetas y archivos que contienen el código fuente
+para responder "por qué" (la intención de negocio).
+
+El export vive en `_inbox/<slug-del-proyecto>/export-aa/` (en proyectos
+antiguos, `_inbox/export/` o `export-automation-anywhere/`), y puede traer
+un árbol por ambiente (`produccion/`, `desarrollo/`). Dentro encontrarás un
+`manifest.json`, que usarás como índice, y las carpetas con el código
+fuente.
+
+En Automation 360 **cada bot es un archivo sin extensión** cuyo contenido
+es JSON (`{"nodes":[...]}`): esos son los que hay que leer, aunque el
+nombre no tenga extensión.
+
+Dentro del árbol del export hay dos cosas que **no se abren nunca**:
+
+- **Las capturas de pantalla** (`.png`, `.jpg`, ...), que viven en carpetas
+  `*Metadata/` con nombres tipo UUID. Son screenshots de captura de objetos
+  del bot, no lógica: no aportan al grafo y cuestan caro de leer.
+- **Los `.zip`** del export (`*.bak-dev.zip`, `*.bak-prd.zip`). El mismo
+  contenido ya está descomprimido al lado; abrirlos solo duplica trabajo.
 
 ## Formatos que puedes encontrar
 

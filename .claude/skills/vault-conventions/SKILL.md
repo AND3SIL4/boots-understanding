@@ -16,6 +16,9 @@ partir de la plantilla correspondiente, nunca escribir una nota desde cero.
 
 ### Multi-instancia — el grafo (26 tipos)
 
+Todas las carpetas de esta tabla cuelgan de
+`obsidian-brain/proyectos/<slug-del-proyecto>/documentacion/`.
+
 | Tipo | Prefijo id | Carpeta | Qué documenta |
 | --- | --- | --- | --- |
 | `Proceso` | `PROC` | `procesos/` | El proceso de negocio completo |
@@ -45,7 +48,7 @@ partir de la plantilla correspondiente, nunca escribir una nota desde cero.
 | `Inconsistencia` | `INCON` | `inconsistencias/` | Dos fuentes que se contradicen, sin resolver |
 | `Documento` | `DOC` | `documentos/` | Fuente, referencia externa o anexo |
 
-### Singleton — una sola nota por proyecto, en la raíz del proyecto
+### Singleton — una sola nota por proyecto, en la raíz de `documentacion/`
 
 | Tipo | Archivo | Qué documenta |
 | --- | --- | --- |
@@ -170,12 +173,19 @@ Los agentes se ejecutan desde la raíz del proyecto. Desde ahí hay dos
     ├── _staging/
     └── proyectos/
         └── <slug-del-proyecto>/
-            ├── _overview.md                ← resumen ejecutivo
-            ├── Proyecto - <slug>.md        ← contexto, alcance, objetivos
-            ├── Arquitectura - <slug>.md
-            ├── MejoresPracticas - <slug>.md
-            ├── Pendientes - <slug>.md
-            └── <carpeta-por-tipo>/         ← ver tabla de tipos
+            ├── <slug>.md                   ← nota raíz del proyecto
+            ├── notas-generales.md
+            ├── control-cambios/            ┐
+            ├── desarrollo/                 │ trabajo humano:
+            ├── reuniones/                  │ la ingestión no escribe aquí
+            ├── soporte/                    ┘
+            └── documentacion/              ← EL GRAFO: todo lo que produce la ingestión
+                ├── _overview.md                ← resumen ejecutivo
+                ├── Proyecto - <slug>.md        ← contexto, alcance, objetivos
+                ├── Arquitectura - <slug>.md
+                ├── MejoresPracticas - <slug>.md
+                ├── Pendientes - <slug>.md
+                └── <carpeta-por-tipo>/         ← ver tabla de tipos
 ```
 
 - **`_inbox/` vive en la raíz, FUERA del vault.** Ahí van los insumos tal
@@ -185,8 +195,16 @@ Los agentes se ejecutan desde la raíz del proyecto. Desde ahí hay dos
   markdown y el inbox puede ser tan heterogéneo como haga falta.
 - **`obsidian-brain/` es el vault**, y es uno solo. Se abre esa carpeta
   (no la raíz) como vault en la app de Obsidian.
-- **`obsidian-brain/proyectos/<slug-del-proyecto>/`** es el grafo
-  verificado de cada proyecto RPA. Un solo vault, una carpeta por proyecto.
+- **`obsidian-brain/proyectos/<slug-del-proyecto>/`** es la carpeta de cada
+  proyecto RPA. Un solo vault, una carpeta por proyecto.
+- **El grafo verificado vive en `<slug-del-proyecto>/documentacion/`**, y
+  esa carpeta la genera y mantiene la ingestión. Las hermanas
+  (`control-cambios/`, `desarrollo/`, `reuniones/`, `soporte/`) son notas
+  de trabajo humano: se pueden enlazar desde y hacia el grafo, pero ningún
+  agente de ingestión o escritura de grafo escribe dentro de ellas.
+- La carpeta `documentacion/` la crea `/nuevo-proyecto` a partir de
+  `proyecto-plantilla`. Si no existe, el proyecto está mal creado: hay que
+  informarlo, no crearla al vuelo.
 - Las carpetas por tipo se crean **solo cuando hay al menos una nota** de
   ese tipo. No pre-crear las 26 vacías.
 - Si hay varios proyectos en curso, agrupar también los insumos por
@@ -196,8 +214,8 @@ Los agentes se ejecutan desde la raíz del proyecto. Desde ahí hay dos
 
 - Nombre de archivo: `<Tipo> - <nombre-corto-descriptivo>.md`
   (ej. `ReglaDeNegocio - aprobacion-gerencial-monto-alto.md`).
-- Ubicación: `obsidian-brain/proyectos/<slug-del-proyecto>/<carpeta-del-tipo>/archivo.md`
-  (ej. `obsidian-brain/proyectos/conciliacion-facturas/reglas/ReglaDeNegocio - ....md`).
+- Ubicación: `obsidian-brain/proyectos/<slug-del-proyecto>/documentacion/<carpeta-del-tipo>/archivo.md`
+  (ej. `obsidian-brain/proyectos/conciliacion-facturas/documentacion/reglas/ReglaDeNegocio - ....md`).
 - Nunca escribir directamente en `obsidian-brain/proyectos/<proyecto>/`:
   las notas nuevas o propuestas van primero a
   `obsidian-brain/_staging/<lote>/` (ver skill `ingestion-pipeline`) y solo

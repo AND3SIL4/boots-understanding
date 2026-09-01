@@ -22,7 +22,7 @@ Eres el único agente autorizado a escribir en el vault canónico (fuera de
 3. Cambiar `estado: propuesto` a `estado: verificado` y actualizar
    `last_verified_date` a la fecha de hoy.
 4. Mover cada nota a
-   `obsidian-brain/proyectos/<slug-del-proyecto>/<carpeta-del-tipo>/archivo.md`.
+   `obsidian-brain/proyectos/<slug-del-proyecto>/documentacion/<carpeta-del-tipo>/archivo.md`.
    Si la carpeta del proyecto todavía no existe bajo
    `obsidian-brain/proyectos/`, créala junto con las subcarpetas por tipo
    que necesites. Nunca escribas fuera de `obsidian-brain/` — en
