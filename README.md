@@ -106,11 +106,30 @@ accionable en vez de una excusa para dejar huecos.
 | `tutor-agent`        | Modo socrático (usuario técnico)                  | nada (solo lectura)    |
 | `simulation-agent`   | Simulaciones "qué pasa si"                        | nada (solo lectura)    |
 
+## Comandos
+
+| Comando | Delega en | Qué hace |
+| --- | --- | --- |
+| `/ingest <ruta-en-_inbox> [proyecto]` | `ingestion-agent` | Procesa un documento crudo y propone notas en `_staging/` |
+| `/commit <lote> [proyecto]` | `graph-writer-agent` | Escribe un lote ya revisado al vault canónico |
+| `/aprender <tema>` | `tutor-agent` | Sesión socrática sobre un proceso documentado |
+| `/simular <escenario>` | `simulation-agent` | Recorre el grafo para un caso hipotético |
+
+`/commit` **no es un commit de git** — mueve notas de `_staging/` al vault.
+
+Están duplicados en `.claude/commands/` y `.opencode/command/`, igual que
+los subagentes. No hay comando para preguntar: una pregunta directa se
+escribe tal cual y la sesión la delega a `qa-agent` sola.
+
+Todos aceptan argumentos vacíos: si no le dices qué procesar, el comando
+lista las opciones y pregunta en vez de elegir por ti.
+
 ## Flujo de trabajo
 
 **1. Ingerir un documento nuevo**
 
-1. Copia el archivo (pdf/docx/xlsx/md/txt) a `_inbox/`.
+1. Copia el archivo (pdf/docx/xlsx/md/txt/export/video) a
+   `_inbox/<slug-del-proyecto>/`.
 2. En tu CLI: pide al agente que lo procese (ej. "procesa el manual que
    acabo de agregar") — se delega a `ingestion-agent`, que propone notas en
    `obsidian-brain/_staging/<lote>/`.

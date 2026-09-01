@@ -57,6 +57,13 @@ No respondas preguntas sobre un proceso documentado directamente desde la
 sesión principal sin pasar por `qa-agent`/`tutor-agent`/`simulation-agent`
 — son los que aplican `cite-sources` de forma consistente.
 
+Cuatro de esas rutas tienen comando propio en `.claude/commands/` (y su
+gemelo en `.opencode/command/`): `/ingest`, `/commit`, `/aprender`,
+`/simular`. Delegan a lo mismo que la tabla de arriba; el comando solo
+añade las validaciones previas (que la ruta exista, que el proyecto esté
+definido, que el humano confirme que revisó el staging). Preguntar no tiene
+comando: una pregunta directa se delega a `qa-agent` sin más.
+
 ## Flujo esperado
 
 `_inbox/` → `ingestion-agent` → `obsidian-brain/_staging/` → revisión
