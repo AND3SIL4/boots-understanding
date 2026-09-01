@@ -64,6 +64,14 @@ añade las validaciones previas (que la ruta exista, que el proyecto esté
 definido). Preguntar no tiene comando: una pregunta directa se delega a
 `qa-agent` sin más.
 
+Hay además dos comandos mecánicos que no delegan en ningún subagente:
+`/nuevo-proyecto <slug>` y `/verificar <ámbito>`. El segundo marca en bloque
+`estado: propuesto` → `verificado`, y **solo se usa cuando el humano ya
+revisó ese ámbito completo**: `verificado` afirma que una persona validó la
+nota, y marcarlo sin haber leído vacía de sentido la única señal que
+distingue lo revisado de lo que entró por inercia. Toca únicamente la línea
+`estado` del frontmatter, nada más.
+
 ## Flujo esperado
 
 `_inbox/` → `ingestion-agent` → `obsidian-brain/_staging/` → revisión

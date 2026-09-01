@@ -112,6 +112,7 @@ accionable en vez de una excusa para dejar huecos.
 | --- | --- | --- |
 | `/ingest <ruta-en-_inbox> [proyecto]` | `ingestion-agent` | Procesa un documento crudo — o la raíz completa de un proyecto — y propone notas en `_staging/` |
 | `/commit <slug-del-proyecto>` | `graph-writer-agent` | Escribe el grafo canónico del proyecto con lo que haya en `_staging/`, y limpia el staging |
+| `/verificar <ámbito>` | — (mecánico) | Marca en bloque `estado: propuesto` → `verificado` en un ámbito que **ya revisaste** |
 | `/aprender <tema>` | `tutor-agent` | Sesión socrática sobre un proceso documentado |
 | `/simular <escenario>` | `simulation-agent` | Recorre el grafo para un caso hipotético |
 
