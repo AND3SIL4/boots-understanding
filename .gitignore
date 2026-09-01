@@ -142,3 +142,9 @@ dist
 .svelte-kit
 
 # End of https://www.toptal.com/developers/gitignore/api/node
+
+
+# Ignorar folders de prueba, no necesarios para los proyectos
+_inbox/
+desktop.ini
+obsidian-brain
