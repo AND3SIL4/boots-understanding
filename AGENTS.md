@@ -48,7 +48,7 @@ contradicen sin elegir ganador. Un hueco declarado es un entregable.
 | El usuario dice algo como...                              | Delegar a            |
 | --------------------------------------------------------- | -------------------- |
 | "procesa este documento", "ingiere lo que hay en \_inbox", "ingiere todo el proyecto" | `ingestion-agent`    |
-| "ya revisé el staging, agrégalo al vault"                 | `graph-writer-agent` |
+| "escribe el grafo del proyecto X", "ya revisé el staging, agrégalo al vault" | `graph-writer-agent` |
 | Una pregunta directa sobre el proceso                     | `qa-agent`           |
 | "quiero entender esto", "enséñame"                        | `tutor-agent`        |
 | "qué pasa si...", "simula..."                             | `simulation-agent`   |
@@ -61,14 +61,33 @@ Cuatro de esas rutas tienen comando propio en `.claude/commands/` (y su
 gemelo en `.opencode/command/`): `/ingest`, `/commit`, `/aprender`,
 `/simular`. Delegan a lo mismo que la tabla de arriba; el comando solo
 añade las validaciones previas (que la ruta exista, que el proyecto esté
-definido, que el humano confirme que revisó el staging). Preguntar no tiene
-comando: una pregunta directa se delega a `qa-agent` sin más.
+definido). Preguntar no tiene comando: una pregunta directa se delega a
+`qa-agent` sin más.
 
 ## Flujo esperado
 
 `_inbox/` → `ingestion-agent` → `obsidian-brain/_staging/` → revisión
 humana → `graph-writer-agent` →
 `obsidian-brain/proyectos/<proyecto>/documentacion/` → consulta.
+
+`/commit` recibe **solo el slug del proyecto**: el agente localiza los lotes
+de `_staging/` que le corresponden y los ordena por fecha.
+
+**No hace falta haber revisado todo el staging para escribir el grafo.** El
+agente reporta cuánto quedó sin revisar y el humano decide si continuar. Lo
+que entra sin revisión humana no se descarta ni se da por bueno: entra al
+grafo con `estado: propuesto` —o sea, marcado como ambiguo— y queda listado
+en `Pendientes - <slug>`. El paso de `propuesto` a `verificado` lo hace
+siempre una persona, nunca un agente.
+
+**`_staging/` es temporal.** Al terminar el `/commit`, el agente verifica
+archivo por archivo que lo escrito está en el vault y solo entonces borra;
+lo que no pudo garantizar se queda ahí y viene reportado. Un `_staging/`
+vacío es la señal de que el grafo está al día, y la siguiente ingestión lo
+vuelve a llenar solo con lo nuevo, que el siguiente `/commit` fusiona sobre
+lo que ya existe. Lo que no es nota —los `_INFORME*` de la ingestión, los
+candidatos a fusión, el ledger de la escritura— se archiva en
+`documentacion/_ingestas/<lote>/` para que la traza sobreviva a la limpieza.
 
 La ingestión acepta un archivo, un lote, o la raíz completa de un proyecto
 (`_inbox/<slug>/`). En ese último caso el orden no es negociable — export

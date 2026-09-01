@@ -48,6 +48,35 @@ que hay notas pero con huecos declarados.
 | Mejores prácticas | pendiente | |
 | Preguntas frecuentes | pendiente | |
 
+## Sin revisión humana
+
+Notas que están en el grafo con `estado: propuesto`: se pueden consultar,
+pero **nadie las ha validado todavía**. Entraron porque al escribir el lote
+se decidió seguir adelante, no porque alguien las diera por buenas. Tratar
+sus afirmaciones como provisionales hasta que un humano las revise en
+Obsidian y les cambie el estado a `verificado`.
+
+| Tipo | Cuántas | Notas |
+| --- | --- | --- |
+| | | |
+
+## Enlaces sin destino
+
+Wikilinks que apuntan a una nota que no existe. **No se borran**: cada uno
+es un nodo que falta documentar, y quitarlo esconde el hueco.
+
+- [ ] `[[Tipo - nombre]]` ← referenciado desde [[Nota - origen]]
+
+## Decisiones de fusión pendientes
+
+Pares de notas que describen el mismo concepto desde niveles de precedencia
+distintos (ver `_ingestas/<lote>/_CANDIDATOS-FUSION.md`). Ambas están
+escritas tal cual: fusionarlas destruiría la trazabilidad por nivel, que es
+lo que hoy permite responder "¿esto lo dice el código o lo dice el manual?".
+La decisión es humana.
+
+- [ ] [[Nota A]] ↔ [[Nota B]] — relación: complementarios / en tensión / jerárquicos
+
 ## Preguntas abiertas
 
 Preguntas concretas para un humano, con a quién dirigirlas. Aquí caen

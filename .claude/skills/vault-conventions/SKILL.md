@@ -73,11 +73,25 @@ last_verified_date: YYYY-MM-DD
 ```
 
 `confidence` refleja qué tan literal es la extracción del documento fuente.
-`estado: propuesto` significa que viene de ingestión sin revisar; solo pasa a
-`verificado` cuando un humano lo confirma.
+
+`estado` marca **si un humano ya revisó la nota**, y vale tanto en
+`_staging/` como en el vault canónico:
+
+- `propuesto` — la escribió la ingestión y nadie la ha revisado. En el vault
+  canónico significa que la nota **es consultable pero ambigua**: entró
+  porque el humano decidió seguir adelante, no porque alguien la validara.
+  Todas las notas en este estado quedan listadas en `Pendientes - <slug>`.
+- `verificado` — un humano la leyó y la dio por buena.
+
+El cambio de `propuesto` a `verificado` **lo hace siempre una persona**
+(típicamente en Obsidian, antes de llamar a `/commit`). Ningún agente
+promueve el estado por su cuenta, y ninguno lo degrada de `verificado` a
+`propuesto`.
 
 `source_doc` admite `n/a` solo en notas derivadas del propio vault
-(`Pendientes`), y una lista de dos o más documentos en `Inconsistencia`.
+(`Pendientes`), y una lista de dos o más documentos en `Inconsistencia`. Las
+notas de tipo `Documento` **no llevan `source_doc`**: son la fuente, no se
+extraen de otra.
 
 ### Campos adicionales por tipo
 
@@ -185,6 +199,7 @@ Los agentes se ejecutan desde la raíz del proyecto. Desde ahí hay dos
                 ├── Arquitectura - <slug>.md
                 ├── MejoresPracticas - <slug>.md
                 ├── Pendientes - <slug>.md
+                ├── _ingestas/<lote>/           ← traza de cada escritura, FUERA del grafo
                 └── <carpeta-por-tipo>/         ← ver tabla de tipos
 ```
 
@@ -195,6 +210,12 @@ Los agentes se ejecutan desde la raíz del proyecto. Desde ahí hay dos
   markdown y el inbox puede ser tan heterogéneo como haga falta.
 - **`obsidian-brain/` es el vault**, y es uno solo. Se abre esa carpeta
   (no la raíz) como vault en la app de Obsidian.
+- **`_staging/` es temporal, no un archivo histórico.** La ingestión lo
+  llena, el humano revisa ahí, y `/commit` lo vacía al escribir el grafo:
+  `graph-writer-agent` borra de staging únicamente lo que verificó presente
+  en el vault, y lo que no pudo garantizar se queda. Un `_staging/` vacío
+  significa que el grafo está al día; lo que quede ahí después de un
+  `/commit` es exactamente lo que no se pudo escribir, y viene reportado.
 - **`obsidian-brain/proyectos/<slug-del-proyecto>/`** es la carpeta de cada
   proyecto RPA. Un solo vault, una carpeta por proyecto.
 - **El grafo verificado vive en `<slug-del-proyecto>/documentacion/`**, y
@@ -205,6 +226,14 @@ Los agentes se ejecutan desde la raíz del proyecto. Desde ahí hay dos
 - La carpeta `documentacion/` la crea `/nuevo-proyecto` a partir de
   `proyecto-plantilla`. Si no existe, el proyecto está mal creado: hay que
   informarlo, no crearla al vuelo.
+- **`documentacion/_ingestas/<lote>/` es la traza, no el grafo.** Guarda lo
+  que `_staging/` producía y no es una nota: los `_INFORME*.md` de la
+  ingestión, `_CANDIDATOS-FUSION.md` y el ledger `_COMMITEADO.md` que deja
+  `graph-writer-agent`. Existe por una razón concreta: `_staging/` es
+  temporal y se vacía tras cada `/commit`, así que sin este archivo se
+  perdería la respuesta a "¿de dónde salió esto?" y "¿qué quedó afuera?".
+  Lleva prefijo `_` como `_overview.md`, y sus archivos **no se parsean como
+  nodos del grafo**: no necesitan frontmatter ni secciones de relación.
 - Las carpetas por tipo se crean **solo cuando hay al menos una nota** de
   ese tipo. No pre-crear las 26 vacías.
 - Si hay varios proyectos en curso, agrupar también los insumos por

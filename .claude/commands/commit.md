@@ -1,34 +1,50 @@
 ---
-description: Toma un lote de _staging/ ya revisado y lo escribe al vault canónico
-argument-hint: <lote-en-_staging> [slug-del-proyecto]
+description: Construye o actualiza el grafo canónico de un proyecto con lo que hay en _staging/, y limpia el staging
+argument-hint: <slug-del-proyecto>
 ---
 
-**No es un commit de git.** Este comando mueve notas revisadas de
-`obsidian-brain/_staging/` al vault canónico.
+**No es un commit de git.** Este comando toma lo que la ingestión dejó en
+`obsidian-brain/_staging/` para un proyecto, lo escribe como grafo canónico
+en `obsidian-brain/proyectos/<slug>/documentacion/` y deja el staging
+vacío.
 
 Delega en el subagente `graph-writer-agent`:
 
-**Lote:** $1
-**Proyecto:** $2
+**Proyecto:** $1
 
 Antes de delegar:
 
-1. Si `$1` está vacío, lista los lotes en `obsidian-brain/_staging/` con
-   cuántas notas tiene cada uno y pregunta cuál aprobar.
-2. Confirma con el usuario que **ya revisó** ese lote. Este comando existe
-   para ejecutar una decisión humana, no para tomarla: si el usuario no ha
-   mirado el staging, dile que lo revise primero.
-3. Si `$2` está vacío, dedúcelo del frontmatter de las notas del lote o de
-   la carpeta de origen. Si no es deducible, pregúntalo.
+1. Si `$1` está vacío, lista los proyectos que tienen lotes en
+   `obsidian-brain/_staging/` — cuántas notas y de qué fecha — y pregunta
+   cuál escribir. Solo hace falta el slug: el agente localiza los lotes
+   (`_staging/<slug>-*/`) y los ordena por fecha él mismo.
+2. Verifica que `obsidian-brain/proyectos/$1/documentacion/` existe. Si no,
+   detente e infórmalo — el proyecto se crea con `/nuevo-proyecto <slug>`,
+   no al vuelo.
+3. Si no hay ningún lote para ese proyecto, dilo: no hay nada que escribir,
+   el grafo ya está al día.
 
-El agente debe, además de mover las notas:
+No hace falta que el usuario haya revisado todo el staging. El agente
+reporta cuánto quedó sin revisar y el usuario decide si continuar; lo que
+entre sin revisión humana queda marcado como ambiguo en el grafo, no se
+descarta ni se da por bueno.
 
-- Cambiar `estado: propuesto` → `verificado` y actualizar
-  `last_verified_date`.
-- Regenerar `_overview.md` y actualizar `Proyecto`, `Arquitectura`,
-  `MejoresPracticas` y `Pendientes` del proyecto.
-- Verificar que todo wikilink apunte a una nota existente; los que no,
-  registrarlos en `Pendientes` como nodos faltantes.
+El agente trabaja en cinco fases: inventario (sin escribir) → escritura →
+verificación → limpieza de staging → `Pendientes`. Los puntos que no son
+negociables:
 
-Al terminar, reporta qué se escribió, qué enlaces quedaron colgando y cómo
-cambió la tabla de cobertura en `Pendientes`.
+- **Nada de `_staging/` se pierde.** Solo se borra lo que se verificó
+  presente en el vault; lo demás se queda en staging y se reporta.
+- Las notas conservan su `estado`. El agente **nunca** promueve `propuesto`
+  a `verificado`: esa marca la pone el humano en Obsidian.
+- Una nota `verificado` en el vault no se sobrescribe con información que la
+  contradiga: se conserva y se crea una `Inconsistencia`.
+- Todo lo que no resolvió un humano —notas sin revisar, enlaces colgantes,
+  candidatos a fusión, contradicciones— queda listado en
+  `Pendientes - <slug>`.
+- Los `_INFORME*.md` y `_CANDIDATOS-FUSION.md` se archivan en
+  `documentacion/_ingestas/<lote>/` junto con el ledger de la escritura.
+
+Al terminar, reporta: notas escritas por tipo, cuántas entraron sin revisar,
+conflictos conservados, enlaces colgantes, cómo cambió la cobertura en
+`Pendientes`, y **qué quedó en staging y por qué**.

@@ -178,8 +178,14 @@ fuente posible de un tema, eso va a `Pendientes` como hueco declarado.
    en la sección `## Extraído de` mencionando la ambigüedad en vez de crear
    el link.
 5. **Escribir todo en `obsidian-brain/_staging/<lote>/`**, nunca en la ubicación
-   final del vault. `<lote>` = nombre del documento + fecha, ej.
-   `obsidian-brain/_staging/manual-conciliacion-2026-08-28/`.
+   final del vault.
+
+   **El nombre del lote empieza siempre por el slug del proyecto**, seguido
+   del documento y la fecha:
+   `obsidian-brain/_staging/<slug>-manual-conciliacion-2026-08-28/`. No es
+   cosmético: el frontmatter de las notas no lleva campo de proyecto, así
+   que el prefijo del lote es lo único que le permite a `/commit <slug>`
+   saber qué lotes le corresponden. Un lote sin ese prefijo queda huérfano.
 
    En modo proyecto completo el lote es uno solo, `<slug>-completo-<fecha>`,
    y por dentro se separa por nivel de precedencia para que la revisión

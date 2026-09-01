@@ -101,7 +101,7 @@ accionable en vez de una excusa para dejar huecos.
 | Subagente            | Hace qué                                          | Puede escribir en      |
 | -------------------- | ------------------------------------------------- | ---------------------- |
 | `ingestion-agent`    | Lee `_inbox/` → propone notas               | solo `obsidian-brain/_staging/` |
-| `graph-writer-agent` | Toma staging aprobado → lo escribe al vault final | `obsidian-brain/` completo      |
+| `graph-writer-agent` | Toma el staging de un proyecto → escribe el grafo canónico → limpia el staging | `obsidian-brain/` completo      |
 | `qa-agent`           | Responde preguntas directas (usuario de negocio)  | nada (solo lectura)    |
 | `tutor-agent`        | Modo socrático (usuario técnico)                  | nada (solo lectura)    |
 | `simulation-agent`   | Simulaciones "qué pasa si"                        | nada (solo lectura)    |
@@ -111,11 +111,12 @@ accionable en vez de una excusa para dejar huecos.
 | Comando | Delega en | Qué hace |
 | --- | --- | --- |
 | `/ingest <ruta-en-_inbox> [proyecto]` | `ingestion-agent` | Procesa un documento crudo — o la raíz completa de un proyecto — y propone notas en `_staging/` |
-| `/commit <lote> [proyecto]` | `graph-writer-agent` | Escribe un lote ya revisado al vault canónico |
+| `/commit <slug-del-proyecto>` | `graph-writer-agent` | Escribe el grafo canónico del proyecto con lo que haya en `_staging/`, y limpia el staging |
 | `/aprender <tema>` | `tutor-agent` | Sesión socrática sobre un proceso documentado |
 | `/simular <escenario>` | `simulation-agent` | Recorre el grafo para un caso hipotético |
 
 `/commit` **no es un commit de git** — mueve notas de `_staging/` al vault.
+Solo necesita el slug del proyecto: los lotes los localiza el agente.
 
 Están duplicados en `.claude/commands/` y `.opencode/command/`, igual que
 los subagentes. No hay comando para preguntar: una pregunta directa se
@@ -134,10 +135,19 @@ lista las opciones y pregunta en vez de elegir por ti.
    acabo de agregar") — se delega a `ingestion-agent`, que propone notas en
    `obsidian-brain/_staging/<lote>/`.
 3. Revisa a mano (o pídele a Claude/OpenCode que te resuma) las notas
-   propuestas en `obsidian-brain/_staging/<lote>/`. Edita lo que haga falta.
-4. Pide que se confirmen ("ya revisé, agrégalas al vault") — se delega a
-   `graph-writer-agent`, que las mueve a su ubicación final y actualiza
-   `_overview.md`.
+   propuestas en `obsidian-brain/_staging/<lote>/`. Edita lo que haga falta
+   y cambia a `estado: verificado` las que des por buenas — esa es la marca
+   de que las revisaste.
+4. Ejecuta `/commit <slug-del-proyecto>` — se delega a `graph-writer-agent`.
+   Antes de escribir nada te muestra un inventario: cuántas notas entran,
+   cuántas siguen sin revisar, qué conflictos y enlaces colgantes hay. Si
+   le dices que siga, escribe el grafo, verifica lo escrito y **limpia el
+   staging**.
+
+No hace falta revisar todo antes de commitear. Lo que entre sin revisión
+humana queda en el grafo con `estado: propuesto` —marcado como ambiguo— y
+listado en `Pendientes - <slug>` para volver sobre ello después. Nada se
+descarta y nada se da por bueno solo.
 
 **1b. Ingerir un proyecto completo de una sola pasada**
 
