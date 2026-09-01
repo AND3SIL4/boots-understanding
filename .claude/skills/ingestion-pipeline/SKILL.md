@@ -98,6 +98,35 @@ fuente posible de un tema, eso va a `Pendientes` como hueco declarado.
    leer nada**. Un inventario que el usuario no vio es una ingestión que
    nadie puede auditar. Recién ahí se recorre el árbol, nivel por nivel.
 
+0c. **Mirar qué hay ya en el grafo antes de proponer nada.** Lee
+   `obsidian-brain/proyectos/<slug>/documentacion/` — nombres de archivo por
+   carpeta de tipo, y el frontmatter (`id`, `source_doc`, `estado`,
+   `confidence`) de lo que haya. Dos situaciones distintas:
+
+   - **Grafo vacío** → primera ingestión del proyecto. Propón todo.
+   - **Grafo poblado** → es una **re-ingestión**, y proponer otra vez lo que
+     ya está escrito no es inofensivo: obliga a revisar de nuevo, nota por
+     nota, material que ya se revisó, y entierra lo realmente nuevo entre
+     cientos de notas idénticas. La revisión humana es el recurso escaso de
+     todo este sistema; gastarla en duplicados es el peor uso posible.
+
+   En re-ingestión, para cada nota candidata compara contra la canónica del
+   mismo nombre de archivo:
+
+   | Situación | Qué haces |
+   | --- | --- |
+   | No existe en el grafo | Proponer |
+   | Existe y el documento dice lo mismo, y ya cita esta fuente | **No proponer** |
+   | Existe, dice lo mismo, pero el documento es una fuente nueva | Proponer como actualización: solo el `source_doc` adicional |
+   | Existe y el documento dice algo distinto | Proponer. La contradicción la resuelve `graph-writer-agent` con su política de conflicto — tú no eliges |
+
+   No compares byte a byte: compara lo que la nota **afirma**. Una redacción
+   distinta que dice lo mismo no es un cambio.
+
+   El `_INFORME.md` del lote reporta cuántas notas se omitieron por estar ya
+   en el grafo sin cambios. Omitir en silencio es tan malo como duplicar: el
+   usuario tiene que poder distinguir "no cambió" de "no se miró".
+
 1. **Leer el documento** desde `_inbox/`, usando la skill de lectura
    correspondiente a su tipo — no leas el archivo crudo sin pasar primero
    por la skill adecuada, cada una sabe qué buscar y qué riesgos evitar
