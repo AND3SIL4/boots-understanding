@@ -10,7 +10,7 @@ el vault (qa-agent, tutor-agent, simulation-agent).
 
 ## Reglas
 
-1. Antes de responder, localizar la(s) nota(s) relevante(s) en `vault/`
+1. Antes de responder, localizar la(s) nota(s) relevante(s) en `obsidian-brain/`
    (usar Grep/Glob sobre `id:`, `tipo:`, o el nombre del archivo).
 2. Toda afirmación factual sobre el proceso debe venir acompañada del
    wikilink de la nota que la respalda, ej.: "el bot requiere aprobación

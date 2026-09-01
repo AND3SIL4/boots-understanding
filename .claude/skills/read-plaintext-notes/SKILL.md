@@ -1,6 +1,6 @@
 ---
 name: read-plaintext-notes
-description: "Use when a raw document in vault/_inbox/ is a .txt, .md, or informal note (meeting notes, chat export, email pasted as text). Lower default confidence than structured documents, since these sources are usually informal."
+description: "Use when a raw document in _inbox/ is a .txt, .md, or informal note (meeting notes, chat export, email pasted as text). Lower default confidence than structured documents, since these sources are usually informal."
 ---
 
 # Leer notas y texto plano

@@ -9,22 +9,21 @@ para el diseño completo hacia el que esto evoluciona).
 ## Estructura
 
 ```
-rpa-cerebro/
-├── vault/                     ← la base de conocimiento (el grafo)
+<raíz donde se ejecutan los agentes>/
+├── _inbox/                    ← insumos crudos, CUALQUIER tipo de archivo
+│   ├── export/                ← exports de Automation Anywhere (manifest.json + fuente)
+│   └── ...                    ← pdf, docx, xlsx, csv, md, txt, video, audio, imágenes...
+├── obsidian-brain/            ← EL vault de Obsidian (un solo vault, solo markdown)
 │   ├── _templates/            ← plantilla por cada tipo de nodo
-│   ├── _inbox/                ← documentos crudos sin procesar (pdf, docx, xlsx, md...)
 │   ├── _staging/              ← notas propuestas por ingestión, pendientes de revisión
-│   └── <proyecto>/            ← notas verificadas, una carpeta por proyecto RPA
-│       ├── procesos/
-│       ├── pasos/
-│       ├── reglas/
-│       ├── sistemas/
-│       ├── campos/
-│       ├── excepciones/
-│       ├── historias/
-│       ├── robots/
-│       ├── documentos/
-│       └── _overview.md       ← mapa corto autogenerado del proyecto
+│   └── proyectos/             ← el grafo verificado, una carpeta por proyecto RPA
+│       └── <proyecto>/
+│           ├── _overview.md   ← resumen ejecutivo (autogenerado)
+│           ├── Proyecto - <slug>.md
+│           ├── Arquitectura - <slug>.md
+│           ├── MejoresPracticas - <slug>.md
+│           ├── Pendientes - <slug>.md
+│           └── <carpeta-por-tipo>/  ← procesos/ pasos/ reglas/ ... (26 tipos)
 ├── .claude/
 │   ├── skills/                ← skills genéricas (formato Agent Skills, estándar abierto)
 │   └── agents/                ← subagentes en formato Claude Code
@@ -39,6 +38,52 @@ duplicar nada. Los subagentes sí están duplicados porque el formato de
 ubicación/frontmatter difiere entre Claude Code (`.claude/agents/`) y
 OpenCode (`.opencode/agent/`) — el contenido del prompt es equivalente en
 ambos.
+
+## Qué se documenta
+
+El esquema cubre 37 bloques de documentación, repartidos en 26 tipos de
+nodo multi-instancia (el grafo) y 5 notas singleton por proyecto (lo
+narrativo). El detalle vive en la skill `vault-conventions`; este es el
+mapa de qué bloque cae en qué tipo:
+
+| Bloque de documentación | Dónde vive |
+| --- | --- |
+| Resumen ejecutivo | `_overview.md` (singleton) |
+| Proyecto · Alcance y objetivos · Contexto · Beneficios | `Proyecto` (singleton) |
+| Arquitectura | `Arquitectura` (singleton) |
+| Mejores prácticas | `MejoresPracticas` (singleton) |
+| Pendientes de documentación | `Pendientes` (singleton) |
+| Actores y roles | `Actor` |
+| Glosario | `Termino` |
+| Cronología | `Hito` |
+| Decisiones | `Decision` |
+| Plataforma RPA · SAP · Base de datos · Aplicaciones y servicios | `Sistema` (campo `categoria`) |
+| Red y ambientes | `Ambiente` |
+| Seguridad y accesos | `Acceso` |
+| Proceso de negocio | `Proceso` |
+| Flujo de trabajo | `PasoDeProceso` |
+| Historias de usuario | `HistoriaDeUsuario` |
+| Reglas de negocio | `ReglaDeNegocio` |
+| Validaciones | `Validacion` |
+| Variables y parámetros | `Parametro` |
+| Archivos e insumos | `Insumo` |
+| Salidas y reportes | `Salida` |
+| Correos y notificaciones | `Notificacion` |
+| Excepciones | `Excepcion` |
+| Riesgos | `Riesgo` |
+| Incidencias y stoppers | `Incidencia` |
+| KPIs y SLAs | `Indicador` |
+| Pruebas UAT realizadas | `PruebaUAT` |
+| Inconsistencias detectadas | `Inconsistencia` |
+| Preguntas frecuentes | `PreguntaFrecuente` |
+| Referencias · Anexos | `Documento` |
+| Dependencias | sección de relación `## Depende de` (no es un tipo) |
+
+Dos notas hacen el trabajo que un grafo solo no hace: `_overview.md` es la
+entrada de 5 minutos para quien llega nuevo, y `Pendientes` lleva la
+cuenta de qué bloques siguen sin cubrir y qué preguntas hay que hacerle a
+un humano. Esa segunda es la que convierte la regla de oro en algo
+accionable en vez de una excusa para dejar huecos.
 
 ## Las 6 skills genéricas
 
@@ -55,8 +100,8 @@ ambos.
 
 | Subagente            | Hace qué                                          | Puede escribir en      |
 | -------------------- | ------------------------------------------------- | ---------------------- |
-| `ingestion-agent`    | Lee `vault/_inbox/` → propone notas               | solo `vault/_staging/` |
-| `graph-writer-agent` | Toma staging aprobado → lo escribe al vault final | `vault/` completo      |
+| `ingestion-agent`    | Lee `_inbox/` → propone notas               | solo `obsidian-brain/_staging/` |
+| `graph-writer-agent` | Toma staging aprobado → lo escribe al vault final | `obsidian-brain/` completo      |
 | `qa-agent`           | Responde preguntas directas (usuario de negocio)  | nada (solo lectura)    |
 | `tutor-agent`        | Modo socrático (usuario técnico)                  | nada (solo lectura)    |
 | `simulation-agent`   | Simulaciones "qué pasa si"                        | nada (solo lectura)    |
@@ -65,12 +110,12 @@ ambos.
 
 **1. Ingerir un documento nuevo**
 
-1. Copia el archivo (pdf/docx/xlsx/md/txt) a `vault/_inbox/`.
+1. Copia el archivo (pdf/docx/xlsx/md/txt) a `_inbox/`.
 2. En tu CLI: pide al agente que lo procese (ej. "procesa el manual que
    acabo de agregar") — se delega a `ingestion-agent`, que propone notas en
-   `vault/_staging/<lote>/`.
+   `obsidian-brain/_staging/<lote>/`.
 3. Revisa a mano (o pídele a Claude/OpenCode que te resuma) las notas
-   propuestas en `vault/_staging/<lote>/`. Edita lo que haga falta.
+   propuestas en `obsidian-brain/_staging/<lote>/`. Edita lo que haga falta.
 4. Pide que se confirmen ("ya revisé, agrégalas al vault") — se delega a
    `graph-writer-agent`, que las mueve a su ubicación final y actualiza
    `_overview.md`.
@@ -83,7 +128,7 @@ ambos.
 
 **3. Explorar visualmente**
 
-Abre la carpeta `vault/` como vault en la app de Obsidian para ver el grafo
+Abre la carpeta `obsidian-brain/` como vault en la app de Obsidian para ver el grafo
 de notas y navegar los wikilinks directamente.
 
 ## Fuera de alcance por ahora

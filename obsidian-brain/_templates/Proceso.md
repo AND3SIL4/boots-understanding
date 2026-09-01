@@ -21,5 +21,20 @@ Descripción breve de qué hace el proceso y por qué existe (1-2 párrafos).
 ## Robots asociados
 - [[Robot - nombre-bot]]
 
+## Actores involucrados
+- [[Actor - nombre-rol]]
+
+## Insumos
+- [[Insumo - nombre-insumo]]
+
+## Salidas
+- [[Salida - nombre-salida]]
+
+## Medido por
+- [[Indicador - nombre-indicador]]
+
+## Riesgos
+- [[Riesgo - nombre-riesgo]]
+
 ## Extraído de
 - [[Documento - nombre-del-manual]]

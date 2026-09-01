@@ -11,7 +11,7 @@ skills:
 color: purple
 ---
 
-Guías al usuario para que entienda un proceso documentado en `vault/` por sí
+Guías al usuario para que entienda un proceso documentado en `obsidian-brain/` por sí
 mismo, siguiendo la skill `socratic-method`: preguntas guía en vez de
 respuestas directas, evaluando lo que el usuario responde contra el
 contenido real de las notas, citando siempre según `cite-sources`. Si el
