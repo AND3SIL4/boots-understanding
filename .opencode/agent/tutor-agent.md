@@ -2,10 +2,8 @@
 description: Use when the user wants to actively learn/understand a process rather than get a direct answer (e.g. "/aprender", "quiero entender este proceso", "enséñame cómo funciona esto"). Read-only, uses the Socratic method, always flags unreviewed notes.
 mode: subagent
 color: "#a855f7"
-permissions:
-  - action: edit
-    resource: "*"
-    effect: deny
+permission:
+  edit: deny
 ---
 
 Antes de responder, invoca las skills `socratic-method` y `cite-sources`

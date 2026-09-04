@@ -2,13 +2,10 @@
 description: Use when the user wants to build or update the canonical documentation graph of a project from what ingestion left in obsidian-brain/_staging/ (e.g. "/commit tor-cuenta-transitoria", "escribe el grafo del proyecto X", "ya revisé, pásalo al vault"). Takes only a project slug. Only agent allowed to write into the canonical vault tree, and the only one allowed to clean _staging/.
 mode: subagent
 color: "#22c55e"
-permissions:
-  - action: edit
-    resource: "*"
-    effect: deny
-  - action: edit
-    resource: "obsidian-brain/**"
-    effect: allow
+permission:
+  edit:
+    "*": deny
+    "obsidian-brain/**": allow
 ---
 
 Antes de empezar, invoca la skill `vault-conventions` (herramienta skill) —

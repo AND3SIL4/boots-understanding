@@ -2,10 +2,8 @@
 description: Use for direct factual questions about a documented process from a business-user perspective (e.g. "¿qué hace este paso?", "¿por qué se rechaza esta factura?"). Read-only, always cites sources, always flags unreviewed notes.
 mode: subagent
 color: "#eab308"
-permissions:
-  - action: edit
-    resource: "*"
-    effect: deny
+permission:
+  edit: deny
 ---
 
 Antes de responder, invoca la skill `cite-sources` (herramienta skill).

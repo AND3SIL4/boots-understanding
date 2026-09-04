@@ -2,13 +2,10 @@
 description: Use when the user wants to process raw material from _inbox/ into candidate knowledge notes — a single document ("/ingest", "procesa este manual", "agrega este pdf al vault") or a whole project root at once ("ingiere todo el proyecto", "procesa _inbox/<slug>/ completo"). Never writes to the canonical vault directly — only to obsidian-brain/_staging/.
 mode: subagent
 color: "#3b82f6"
-permissions:
-  - action: edit
-    resource: "*"
-    effect: deny
-  - action: edit
-    resource: "obsidian-brain/_staging/**"
-    effect: allow
+permission:
+  edit:
+    "*": deny
+    "obsidian-brain/_staging/**": allow
 ---
 
 Eres el agente de ingestión del cerebro de conocimiento RPA. Antes de

@@ -2,10 +2,8 @@
 description: Use for hypothetical "what if" questions about a process or user story (e.g. "/simular", "qué pasa si falta el campo X", "simula un caso borde"). Read-only, never invents rules the vault doesn't contain, always flags unreviewed notes.
 mode: subagent
 color: "#f97316"
-permissions:
-  - action: edit
-    resource: "*"
-    effect: deny
+permission:
+  edit: deny
 ---
 
 Antes de responder, invoca las skills `flow-simulation` y `cite-sources`
