@@ -1,0 +1,306 @@
+{
+  "main": {
+    "id": "76e26526156f4da8",
+    "type": "split",
+    "children": [
+      {
+        "id": "4d1c7656f36a3dcf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "05d1b36589f7532c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "obsidian-brain/notes-to-do.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "notes-to-do"
+            }
+          },
+          {
+            "id": "bfbdeeb4c6bca74a",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "obsidian-brain/_resources/Pasted image 20260917134234.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260917134234"
+            }
+          },
+          {
+            "id": "243a31ef27e5de36",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "obsidian-brain/_resources/Pasted image 20260917134234.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260917134234"
+            }
+          },
+          {
+            "id": "42f731ecc00a0ec0",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "obsidian-brain/_resources/Pasted image 20260917122753.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260917122753"
+            }
+          },
+          {
+            "id": "0364a2c467207706",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "obsidian-brain/_resources/Pasted image 20260917134234.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260917134234"
+            }
+          },
+          {
+            "id": "82ee04bf79ee3077",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "obsidian-brain/notes-to-do.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "notes-to-do"
+            }
+          },
+          {
+            "id": "ab10cea07a2ea2fb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "obsidian-brain/notes-to-do.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "notes-to-do"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4fd0d22e17c137ed",
+    "type": "split",
+    "children": [
+      {
+        "id": "3abfa9c5c55df287",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d27f3aed8ac3e3e3",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "73e3de8e8618345c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "53bdabe3023759af",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 640.7000122070312
+  },
+  "right": {
+    "id": "3630f1b9fafd2685",
+    "type": "split",
+    "children": [
+      {
+        "id": "ce9c9e7daf433534",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1e91e099d68bc3a3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-003.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes"
+            }
+          },
+          {
+            "id": "2ffcc01babe061d9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-003.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes"
+            }
+          },
+          {
+            "id": "e46db5c360592e55",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "20d5c52417208d64",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas las propiedades"
+            }
+          },
+          {
+            "id": "c472d65d9e4bc4f7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-003.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
+    }
+  },
+  "active": "82ee04bf79ee3077",
+  "lastOpenFiles": [
+    "obsidian-brain/README.md",
+    "obsidian-brain/notes-to-do.md",
+    "obsidian-brain/home.md",
+    "obsidian-brain/2026-08-31.md",
+    "obsidian-brain/_resources/Pasted image 20260917122753.png",
+    "obsidian-brain/_resources/Pasted image 20260917134234.png",
+    "obsidian-brain/_resources/Pasted image 20260908151232.png",
+    "obsidian-brain/_resources/evidencia-modificación-lista-medios-de-pago.png",
+    "obsidian-brain/proyectos/escarlet-cuadre-cajeros/soporte/SUP-2026-003-procesamient-fuera-fechas.md",
+    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-005.md",
+    "obsidian-brain/proyectos/escarlet-cuadre-cajeros/soporte/SUP-2026-000.md",
+    "obsidian-brain/proyectos/escarlet-cuadre-cajeros/escarlet-cuadre-cajeros.md",
+    "_inbox/escarlet-cuadre-cajeros/transcripciones/2026-10-08 14-06-53.txt",
+    "_inbox/tor-cuenta-transitoria/tmp/grabaciones/2026-10-07 09-08-12.mp4",
+    "_inbox/escarlet-cuadre-cajeros/tmp/grabaciones/2026-10-08 14-06-53.mp4",
+    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-003.md",
+    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-004.md",
+    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-002.md",
+    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-001.md",
+    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-000.md",
+    "obsidian-brain/proyectos/escarlet-cuadre-cajeros/soporte/SUP-2026-002.md",
+    "obsidian-brain/proyectos/escarlet-cuadre-cajeros/soporte/SUP-2026-001.md",
+    "obsidian-brain/proyectos/coni-conciliacion-fondos/coni-conciliacion-fondos.md",
+    "obsidian-brain/proyectos/coni-conciliacion-fondos/notas-generales.md",
+    "obsidian-brain/proyectos/coni-conciliacion-fondos/reuniones/MTG-2026-000 - Tema de la reunion.md",
+    "CLAUDE.md",
+    "README.md",
+    "AGENTS.md",
+    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20260930.txt",
+    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20261001.txt",
+    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20261003.txt",
+    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20261004.txt",
+    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20261005.txt",
+    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20261006.txt",
+    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/__Log_WPROFABRIC5RPAC2_CGOTCCMP_20261007.txt"
+  ]
+}
