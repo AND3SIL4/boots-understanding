@@ -8,97 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "05d1b36589f7532c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "obsidian-brain/notes-to-do.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "notes-to-do"
-            }
-          },
-          {
-            "id": "bfbdeeb4c6bca74a",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "obsidian-brain/_resources/Pasted image 20260917134234.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260917134234"
-            }
-          },
-          {
-            "id": "243a31ef27e5de36",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "obsidian-brain/_resources/Pasted image 20260917134234.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260917134234"
-            }
-          },
-          {
-            "id": "42f731ecc00a0ec0",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "obsidian-brain/_resources/Pasted image 20260917122753.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260917122753"
-            }
-          },
-          {
-            "id": "0364a2c467207706",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "obsidian-brain/_resources/Pasted image 20260917134234.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260917134234"
-            }
-          },
-          {
             "id": "82ee04bf79ee3077",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "obsidian-brain/notes-to-do.md",
+                "file": "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-008-bogota-prosegur-pdf-csv.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "notes-to-do"
-            }
-          },
-          {
-            "id": "ab10cea07a2ea2fb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "obsidian-brain/notes-to-do.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "notes-to-do"
+              "title": "SUP-2026-008-bogota-prosegur-pdf-csv"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "vertical"
@@ -160,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 640.7000122070312
+    "width": 434.3000183105469
   },
   "right": {
     "id": "3630f1b9fafd2685",
@@ -267,40 +190,51 @@
   },
   "active": "82ee04bf79ee3077",
   "lastOpenFiles": [
-    "obsidian-brain/README.md",
-    "obsidian-brain/notes-to-do.md",
-    "obsidian-brain/home.md",
-    "obsidian-brain/2026-08-31.md",
-    "obsidian-brain/_resources/Pasted image 20260917122753.png",
-    "obsidian-brain/_resources/Pasted image 20260917134234.png",
-    "obsidian-brain/_resources/Pasted image 20260908151232.png",
-    "obsidian-brain/_resources/evidencia-modificación-lista-medios-de-pago.png",
-    "obsidian-brain/proyectos/escarlet-cuadre-cajeros/soporte/SUP-2026-003-procesamient-fuera-fechas.md",
-    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-005.md",
-    "obsidian-brain/proyectos/escarlet-cuadre-cajeros/soporte/SUP-2026-000.md",
-    "obsidian-brain/proyectos/escarlet-cuadre-cajeros/escarlet-cuadre-cajeros.md",
-    "_inbox/escarlet-cuadre-cajeros/transcripciones/2026-10-08 14-06-53.txt",
-    "_inbox/tor-cuenta-transitoria/tmp/grabaciones/2026-10-07 09-08-12.mp4",
-    "_inbox/escarlet-cuadre-cajeros/tmp/grabaciones/2026-10-08 14-06-53.mp4",
-    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-003.md",
-    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-004.md",
-    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-002.md",
-    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-001.md",
-    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-000.md",
-    "obsidian-brain/proyectos/escarlet-cuadre-cajeros/soporte/SUP-2026-002.md",
-    "obsidian-brain/proyectos/escarlet-cuadre-cajeros/soporte/SUP-2026-001.md",
-    "obsidian-brain/proyectos/coni-conciliacion-fondos/coni-conciliacion-fondos.md",
-    "obsidian-brain/proyectos/coni-conciliacion-fondos/notas-generales.md",
-    "obsidian-brain/proyectos/coni-conciliacion-fondos/reuniones/MTG-2026-000 - Tema de la reunion.md",
-    "CLAUDE.md",
-    "README.md",
-    "AGENTS.md",
-    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20260930.txt",
-    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20261001.txt",
-    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20261003.txt",
-    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20261004.txt",
-    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20261005.txt",
-    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/Log_WPROFABRIC5RPAC2_CGOTCCMP_20261006.txt",
-    "_inbox/escarlet-cuadre-cajeros/logs-ejemplos/__Log_WPROFABRIC5RPAC2_CGOTCCMP_20261007.txt"
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/sed9XY2Zp",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/inconsistencias/sedbRtIy6",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/inconsistencias/sedd9q3Rx",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/incidencias/sedPfvsmm",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/incidencias/sed92G0BL",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/incidencias/sedz8ZTBP",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/incidencias/sedW6v7TJ",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/documentos/sedV81Fxo",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/cronologia/sed1kVbkV",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/ambientes/sedHDUuvh",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/sedTIerPs",
+    "obsidian-brain/proyectos/escarlet-cuadre-cajeros/soporte/SUP-2026-011-hu05-filas-vacias-fecha-valor.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/insumos/Insumo - control-su-bono-xlsx.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/insumos/Insumo - base-cuadre-bw.md",
+    "obsidian-brain/proyectos/coni-conciliacion-fondos/soporte/SUP-2026-008-bogota-prosegur-pdf-csv.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/_INFORME.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/Pendientes - bruno-conciliacion-bonos.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/inconsistencias/Inconsistencia - usuario-licencia-comentario-vs-log.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/inconsistencias/Inconsistencia - maquina-quemada-vs-observada.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/incidencias/Incidencia - hu08-cabecera-no-cumple.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/incidencias/Incidencia - hu14-plantillas-con-errores.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/incidencias/Incidencia - hu15-insumo-no-existe-en-ruta.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/incidencias/Incidencia - cambio-licencia-sin-token.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/cronologia/Hito - ventana-ejecucion-observada.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/ambientes/Ambiente - produccion-maquina-observada.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/04-otros/documentos/Documento - logs-ejemplos.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/_overview.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/Proyecto - bruno-conciliacion-bonos.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/MejoresPracticas - bruno-conciliacion-bonos.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/Arquitectura - bruno-conciliacion-bonos.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/inconsistencias/Inconsistencia - claves-reglas-tolerancia.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/inconsistencias/Inconsistencia - descripciones-manifest-vs-cabeceras.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/inconsistencias/Inconsistencia - global-values-no-declarados.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/glosario/Termino - c13-cooptrais-incocredito.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/glosario/Termino - partidas-abiertas.md",
+    "obsidian-brain/_staging/bruno-conciliacion-bonos-export-logs-2026-11-06/01-export-aa/glosario/Termino - bin.md",
+    "_inbox/bruno-conciliacion-bonos/export-aa/produccion/bruno.20261106_141327.prd/Automation Anywhere/Bots/6. OPERACIONES Y TESORERIA/MediosDePago/SuBono/HU/HU14_CargarPlantillaMasivaSAPMetadata/f80bd020-0e3d-43fe-99f5-f06c1bc279a5.png",
+    "_inbox/bruno-conciliacion-bonos/export-aa/produccion/bruno.20261106_141327.prd/Automation Anywhere/Bots/6. OPERACIONES Y TESORERIA/MediosDePago/SuBono/HU/HU14_CargarPlantillaMasivaSAPMetadata/f5a610a0-d696-47d9-a4a1-1c7b1f754fe7.png",
+    "_inbox/bruno-conciliacion-bonos/export-aa/produccion/bruno.20261106_141327.prd/Automation Anywhere/Bots/6. OPERACIONES Y TESORERIA/MediosDePago/SuBono/HU/HU14_CargarPlantillaMasivaSAPMetadata/eb9062fc-39e4-445e-b25f-4f92ebbdbb3f.png",
+    "_inbox/bruno-conciliacion-bonos/export-aa/produccion/bruno.20261106_141327.prd/Automation Anywhere/Bots/6. OPERACIONES Y TESORERIA/MediosDePago/SuBono/HU/HU14_CargarPlantillaMasivaSAPMetadata/e89875c2-72da-43c0-ae41-07ffa88bdb04.png",
+    "_inbox/bruno-conciliacion-bonos/export-aa/produccion/bruno.20261106_141327.prd/Automation Anywhere/Bots/6. OPERACIONES Y TESORERIA/MediosDePago/SuBono/HU/HU14_CargarPlantillaMasivaSAPMetadata/d4ca4817-fab4-41f8-8b75-ca1f52f25aa2.png",
+    "_inbox/bruno-conciliacion-bonos/export-aa/produccion/bruno.20261106_141327.prd/Automation Anywhere/Bots/6. OPERACIONES Y TESORERIA/MediosDePago/SuBono/HU/HU14_CargarPlantillaMasivaSAPMetadata/e0d34c81-8191-425d-bea8-c84c7d8b2146.png",
+    "_inbox/bruno-conciliacion-bonos/export-aa/produccion/bruno.20261106_141327.prd/Automation Anywhere/Bots/6. OPERACIONES Y TESORERIA/MediosDePago/SuBono/HU/HU14_CargarPlantillaMasivaSAPMetadata/d180d67d-b1fa-433f-88f4-45eb36572a48.png",
+    "_inbox/bruno-conciliacion-bonos/export-aa/produccion/bruno.20261106_141327.prd/Automation Anywhere/Bots/6. OPERACIONES Y TESORERIA/MediosDePago/SuBono/HU/HU14_CargarPlantillaMasivaSAPMetadata/cc92f86d-061d-4ac4-9685-1ba0cac2ca81.png",
+    "_inbox/bruno-conciliacion-bonos/export-aa/produccion/bruno.20261106_141327.prd/Automation Anywhere/Bots/6. OPERACIONES Y TESORERIA/MediosDePago/SuBono/HU/HU14_CargarPlantillaMasivaSAPMetadata/c3c3d10e-e9d6-4c51-ab80-eb6f66ce0c2b.png",
+    "_inbox/bruno-conciliacion-bonos/export-aa/produccion/bruno.20261106_141327.prd/Automation Anywhere/Bots/6. OPERACIONES Y TESORERIA/MediosDePago/SuBono/HU/HU14_CargarPlantillaMasivaSAPMetadata/b297aa34-bde7-4735-bb37-6e912e043115.png"
   ]
 }

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "989d5d06-43c3-4063-a8f7-015e9c35c8a2",
+  "status": "current",
+  "command": "deliver",
+  "type": "explainer",
+  "input": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\candidate.archify.md",
+  "output": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.html",
+  "specification": {
+    "sha256": "9977e1e6cc402c1c7d16c78e34c3de8b7a6f180bab03be5e155806c79ca9ae5b",
+    "bytes": 15037
+  },
+  "artifact": {
+    "sha256": "3100016fa0c9113f3d5a624044ce1d2627a41eac5a808db38988d3134602f11d",
+    "bytes": 1060831
+  },
+  "explainer": {
+    "preparedSha256": "eaea2b4a849d55adf332212912fd5f30462201056f65b674363f086ff810a99b",
+    "dependencies": [
+      {
+        "kind": "diagram-spec",
+        "id": "extm-sequence",
+        "inline": true,
+        "sha256": "9949ad44dd6783da4f5d9c5013024df1e6125489db634789a9e707224d930dbe",
+        "bytes": 2489
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "extm-decision",
+        "inline": true,
+        "sha256": "1d1814d539fb78c3c5a10218542ea31fab12c2b55bad929ff048b95665f3c5ae",
+        "bytes": 1993
+      }
+    ]
+  }
+}

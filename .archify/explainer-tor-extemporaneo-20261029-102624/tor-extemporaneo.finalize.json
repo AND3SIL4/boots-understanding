@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "explainer",
+  "quality": "showcase",
+  "startedAt": "2026-10-29T15:27:42.717Z",
+  "specification": {
+    "path": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\candidate.archify.md",
+    "sha256": "9977e1e6cc402c1c7d16c78e34c3de8b7a6f180bab03be5e155806c79ca9ae5b",
+    "bytes": 15037
+  },
+  "artifact": {
+    "path": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.html",
+    "sha256": "3100016fa0c9113f3d5a624044ce1d2627a41eac5a808db38988d3134602f11d",
+    "bytes": 1060831
+  },
+  "stages": {
+    "browser-check": {
+      "status": "not-run",
+      "execution": "not-requested"
+    },
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "C:\\Users\\Felipe Silva\\.bun\\bin\\bun.exe",
+        "C:\\Users\\Felipe Silva\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "explainer",
+        "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\candidate.archify.md",
+        "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "9977e1e6cc402c1c7d16c78e34c3de8b7a6f180bab03be5e155806c79ca9ae5b",
+          "bytes": 15037
+        },
+        "validation": {
+          "checksPassed": 4,
+          "checkCount": 4,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 1040,
+      "command": [
+        "C:\\Users\\Felipe Silva\\.bun\\bin\\bun.exe",
+        "C:\\Users\\Felipe Silva\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "explainer",
+        "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\candidate.archify.md",
+        "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "989d5d06-43c3-4063-a8f7-015e9c35c8a2",
+        "ok": true,
+        "command": "deliver",
+        "type": "explainer",
+        "input": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\candidate.archify.md",
+        "output": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.html",
+        "explainer": {
+          "preparedSha256": "eaea2b4a849d55adf332212912fd5f30462201056f65b674363f086ff810a99b",
+          "dependencies": [
+            {
+              "kind": "diagram-spec",
+              "id": "extm-sequence",
+              "inline": true,
+              "sha256": "9949ad44dd6783da4f5d9c5013024df1e6125489db634789a9e707224d930dbe",
+              "bytes": 2489
+            },
+            {
+              "kind": "diagram-spec",
+              "id": "extm-decision",
+              "inline": true,
+              "sha256": "1d1814d539fb78c3c5a10218542ea31fab12c2b55bad929ff048b95665f3c5ae",
+              "bytes": 1993
+            }
+          ]
+        },
+        "specification": {
+          "sha256": "9977e1e6cc402c1c7d16c78e34c3de8b7a6f180bab03be5e155806c79ca9ae5b",
+          "bytes": 15037
+        },
+        "artifact": {
+          "sha256": "3100016fa0c9113f3d5a624044ce1d2627a41eac5a808db38988d3134602f11d",
+          "bytes": 1060831
+        },
+        "validation": {
+          "checksPassed": 4,
+          "checkCount": 4,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      }
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 441,
+      "command": [
+        "C:\\Users\\Felipe Silva\\.bun\\bin\\bun.exe",
+        "C:\\Users\\Felipe Silva\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "check",
+        "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.html",
+        "family": "explainer",
+        "artifact": {
+          "sha256": "3100016fa0c9113f3d5a624044ce1d2627a41eac5a808db38988d3134602f11d",
+          "bytes": 1060831
+        },
+        "checks": [
+          {
+            "name": "explainer_structure",
+            "ok": true,
+            "details": [
+              "113 unique DOM IDs"
+            ]
+          },
+          {
+            "name": "explainer_payload_identity",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "explainer_dependencies",
+            "ok": true,
+            "details": [
+              "2 frozen dependencies"
+            ]
+          },
+          {
+            "name": "explainer_native_diagrams",
+            "ok": true,
+            "details": [
+              "extm-sequence: pass",
+              "extm-decision: pass"
+            ]
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "issues": [],
+          "nativeDiagrams": [
+            {
+              "id": "extm-sequence",
+              "receipt": {
+                "ok": true,
+                "file": "C:\\Users\\FELIPE~1\\AppData\\Local\\Temp\\archify-explainer-check-AlNsFF\\child.html",
+                "artifact": {
+                  "sha256": "c0f8761c2558b0f102eb743724be194b6b7e04246959cbb4888a4e353427d8db",
+                  "bytes": 840787
+                },
+                "checks": [
+                  {
+                    "name": "single_svg",
+                    "ok": true,
+                    "details": [
+                      "found 1 <svg> block(s)"
+                    ]
+                  },
+                  {
+                    "name": "finite_svg",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "orthogonal_arrows",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "label_route_clearance",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "relationship_crossings",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "relationship_corridors",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "container_border_runs",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "route_rhythm",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "legend_clearance",
+                    "ok": true,
+                    "details": []
+                  }
+                ],
+                "composition": {
+                  "schemaVersion": 1,
+                  "profile": "showcase",
+                  "status": "pass",
+                  "summary": {
+                    "errors": 0,
+                    "warnings": 0
+                  },
+                  "metrics": {
+                    "properCrossings": 0,
+                    "resolvedCrossovers": 0,
+                    "ambiguousCorridors": 0,
+                    "arrowheadCollisions": 0,
+                    "containerBorderRuns": 0,
+                    "labelRouteClearanceIssues": 0,
+                    "labelCanvasOverflowIssues": 0,
+                    "minLabelRouteClearance": 28,
+                    "desktopReadabilityIssues": 0,
+                    "viewportHeightIssues": 0,
+                    "minProjectedNodeTextPx": 11,
+                    "maxBends": 0,
+                    "routesOverSuggestedBends": 0,
+                    "maxStretch": 1,
+                    "routesOverSuggestedStretch": 0,
+                    "minSegmentPx": 156.8,
+                    "minInteriorSegmentPx": null,
+                    "shortSegmentCount": 0,
+                    "shortEndpointSegmentCount": 0,
+                    "shortInteriorSegmentCount": 0,
+                    "microSegmentCount": 0
+                  },
+                  "suggestedLimits": {
+                    "bendsPerRelationship": 2,
+                    "stretch": 1.35,
+                    "segmentPx": 16,
+                    "microSegmentPx": 8
+                  },
+                  "routeReview": {
+                    "crossings": [],
+                    "detours": []
+                  },
+                  "leadingSpace": {
+                    "measured": false,
+                    "reviewSuggested": false
+                  },
+                  "sequenceColumnSpace": {
+                    "measured": true,
+                    "columnFit": "spread",
+                    "participantCount": 5,
+                    "occupiedRight": 880,
+                    "viewBoxLeft": 0,
+                    "canvasWidth": 920,
+                    "emptyRightPx": 40,
+                    "emptyRightRatio": 0.043,
+                    "typicalParticipantWidth": 135,
+                    "reviewSuggested": false
+                  },
+                  "desktopReadability": {
+                    "budgetBasis": "legacy-930",
+                    "readerContract": "declared-wide-v1",
+                    "availableDiagramWidth": 930,
+                    "actualBudgetPx": 930,
+                    "limit": "legacy",
+                    "requestedTargetPx": null,
+                    "requestedTargetMet": null,
+                    "hardFloorPx": 6,
+                    "hardFloorMet": true,
+                    "minimumOwner": {
+                      "kind": "edge",
+                      "id": "main-to-hu15-1",
+                      "from": "main",
+                      "to": "hu15"
+                    },
+                    "minimumSourceTextPx": 11,
+                    "minimumProjectedTextPx": 11,
+                    "semanticTextCount": 21
+                  },
+                  "issues": []
+                }
+              }
+            },
+            {
+              "id": "extm-decision",
+              "receipt": {
+                "ok": true,
+                "file": "C:\\Users\\FELIPE~1\\AppData\\Local\\Temp\\archify-explainer-check-hwBFUQ\\child.html",
+                "artifact": {
+                  "sha256": "0007478ae9433bdee96fffc0f4b5d32d6ab61458bfbb58bb043b5307f0b4b094",
+                  "bytes": 840561
+                },
+                "checks": [
+                  {
+                    "name": "single_svg",
+                    "ok": true,
+                    "details": [
+                      "found 1 <svg> block(s)"
+                    ]
+                  },
+                  {
+                    "name": "finite_svg",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "orthogonal_arrows",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "label_route_clearance",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "relationship_crossings",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "relationship_corridors",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "container_border_runs",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "route_rhythm",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "legend_clearance",
+                    "ok": true,
+                    "details": []
+                  }
+                ],
+                "composition": {
+                  "schemaVersion": 1,
+                  "profile": "showcase",
+                  "status": "pass",
+                  "summary": {
+                    "errors": 0,
+                    "warnings": 0
+                  },
+                  "metrics": {
+                    "properCrossings": 0,
+                    "resolvedCrossovers": 0,
+                    "ambiguousCorridors": 0,
+                    "arrowheadCollisions": 0,
+                    "containerBorderRuns": 0,
+                    "labelRouteClearanceIssues": 0,
+                    "labelCanvasOverflowIssues": 0,
+                    "minLabelRouteClearance": 34.4,
+                    "desktopReadabilityIssues": 0,
+                    "viewportHeightIssues": 0,
+                    "minProjectedNodeTextPx": 6.526315789473684,
+                    "maxBends": 0,
+                    "routesOverSuggestedBends": 0,
+                    "maxStretch": 1,
+                    "routesOverSuggestedStretch": 0,
+                    "minSegmentPx": 8,
+                    "minInteriorSegmentPx": null,
+                    "shortSegmentCount": 4,
+                    "shortEndpointSegmentCount": 4,
+                    "shortInteriorSegmentCount": 0,
+                    "microSegmentCount": 0
+                  },
+                  "suggestedLimits": {
+                    "bendsPerRelationship": 2,
+                    "stretch": 1.35,
+                    "segmentPx": 16,
+                    "microSegmentPx": 8
+                  },
+                  "routeReview": {
+                    "crossings": [],
+                    "detours": []
+                  },
+                  "leadingSpace": {
+                    "measured": false,
+                    "reviewSuggested": false
+                  },
+                  "desktopReadability": {
+                    "budgetBasis": "legacy-930",
+                    "readerContract": "declared-wide-v1",
+                    "availableDiagramWidth": 930,
+                    "actualBudgetPx": 930,
+                    "limit": "legacy",
+                    "requestedTargetPx": null,
+                    "requestedTargetMet": null,
+                    "hardFloorPx": 6,
+                    "hardFloorMet": true,
+                    "minimumOwner": {
+                      "kind": "edge",
+                      "id": "fila-to-dias-1",
+                      "from": "fila",
+                      "to": "dias"
+                    },
+                    "minimumSourceTextPx": 8,
+                    "minimumProjectedTextPx": 6.526315789473684,
+                    "semanticTextCount": 14
+                  },
+                  "issues": []
+                }
+              }
+            }
+          ]
+        },
+        "diagnostics": [],
+        "provenance": "current",
+        "deliveryReceiptId": "989d5d06-43c3-4063-a8f7-015e9c35c8a2"
+      }
+    }
+  },
+  "browserCheck": {
+    "requested": false,
+    "ran": false
+  },
+  "diagnostics": [],
+  "evidence": {
+    "receipt": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.finalize.json",
+    "summaryReceipt": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "finishedAt": "2026-10-29T15:27:44.607Z",
+  "durationMs": 1890,
+  "update": {
+    "status": "unavailable",
+    "installedVersion": null,
+    "availableVersion": null,
+    "releaseNotes": null,
+    "checkedAt": null,
+    "source": null,
+    "noticeRequired": false,
+    "noticeText": null,
+    "reason": "timeout"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "explainer",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\candidate.archify.md",
+    "sha256": "9977e1e6cc402c1c7d16c78e34c3de8b7a6f180bab03be5e155806c79ca9ae5b",
+    "bytes": 15037
+  },
+  "artifact": {
+    "path": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.html",
+    "sha256": "3100016fa0c9113f3d5a624044ce1d2627a41eac5a808db38988d3134602f11d",
+    "bytes": 1060831
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "not-run"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.finalize.json",
+    "summaryReceipt": "C:\\COLSUBSIDIO\\.archify\\explainer-tor-extemporaneo-20261029-102624\\tor-extemporaneo.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 1890,
+  "browserCheck": {
+    "requested": false,
+    "ran": false
+  }
+}
