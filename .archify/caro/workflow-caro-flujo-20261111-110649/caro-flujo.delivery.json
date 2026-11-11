@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "c1f89077-e82f-48cd-ae8c-60b9be0d6b66",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "C:\\COLSUBSIDIO\\.archify\\caro\\workflow-caro-flujo-20261111-110649\\candidate.json",
+  "output": "C:\\COLSUBSIDIO\\.archify\\caro\\workflow-caro-flujo-20261111-110649\\caro-flujo.html",
+  "specification": {
+    "sha256": "676643f57fac4b5fda820649b10d4c5be87dc2febedd4150929e4b48d08435a9",
+    "bytes": 7231
+  },
+  "artifact": {
+    "sha256": "42560d8aa765b5ca38bb8a0b3104a36f045ac37d36294ba9def44bdd44e1fe2c",
+    "bytes": 868144
+  }
+}

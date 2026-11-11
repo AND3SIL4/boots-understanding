@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\COLSUBSIDIO\\.archify\\caro\\workflow-caro-flujo-20261111-110649\\candidate.json",
+    "sha256": "676643f57fac4b5fda820649b10d4c5be87dc2febedd4150929e4b48d08435a9",
+    "bytes": 7231
+  },
+  "artifact": {
+    "path": "C:\\COLSUBSIDIO\\.archify\\caro\\workflow-caro-flujo-20261111-110649\\caro-flujo.html",
+    "sha256": "42560d8aa765b5ca38bb8a0b3104a36f045ac37d36294ba9def44bdd44e1fe2c",
+    "bytes": 868144
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\COLSUBSIDIO\\.archify\\caro\\workflow-caro-flujo-20261111-110649\\caro-flujo.finalize.json",
+    "summaryReceipt": "C:\\COLSUBSIDIO\\.archify\\caro\\workflow-caro-flujo-20261111-110649\\caro-flujo.finalize-summary.json",
+    "browserCheckReceipt": "C:\\COLSUBSIDIO\\.archify\\caro\\workflow-caro-flujo-20261111-110649\\caro-flujo.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-11-10T13:16:07.018Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 10817,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

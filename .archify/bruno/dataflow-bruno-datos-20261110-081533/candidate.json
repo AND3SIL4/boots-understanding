@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "Bruno: de los insumos a SAP",
+    "locale": "es",
+    "quality_profile": "showcase",
+    "output": ".archify/dataflow-bruno-datos-20261110-081533/bruno-datos.html"
+  },
+  "stages": [
+    { "label": "Insumos" },
+    { "label": "Carga en SQL" },
+    { "label": "Confrontación" },
+    { "label": "Resultados" },
+    { "label": "Destino" }
+  ],
+  "nodes": [
+    { "id": "anexos", "type": "external", "label": "Anexo1 y Anexo5", "sublabel": "Excel de parámetros", "stage": 0, "row": 0 },
+    { "id": "basebw", "type": "database", "label": "Cajero.BaseCuadreBW", "sublabel": "saldos BW del día", "stage": 0, "row": 1 },
+    { "id": "txt", "type": "external", "label": "Archivos .txt", "sublabel": "T87, MV y SA por día", "stage": 0, "row": 2 },
+    { "id": "csb", "type": "external", "label": "Control Su Bono", "sublabel": "Excel, hoja DETALLADO", "stage": 0, "row": 3 },
+
+    { "id": "param", "type": "database", "label": "Parámetros", "sublabel": "EnvioCorreos, ControlInsumo", "tag": "HU01-HU02", "stage": 1, "row": 0 },
+    { "id": "bonobw", "type": "database", "label": "BonoBW", "sublabel": "EstadoBonos", "tag": "HU03", "stage": 1, "row": 1 },
+    { "id": "bines", "type": "database", "label": "BinesSuBono", "sublabel": "medio de pago, punto", "tag": "HU04-HU05", "stage": 1, "row": 2 },
+    { "id": "detalle", "type": "database", "label": "ControlDetalle", "sublabel": "marca reclasificar", "tag": "HU08", "stage": 1, "row": 3 },
+
+    { "id": "ticket", "type": "backend", "label": "TicketInsumo", "sublabel": "cruce BW contra T87", "tag": "HU06-HU07", "stage": 2, "row": 1 },
+    { "id": "comp", "type": "backend", "label": "Compensación", "sublabel": "suma cero, SA, vencidos, C13", "tag": "HU09-HU12", "stage": 2, "row": 2 },
+
+    { "id": "consolidados", "type": "database", "label": "Consolidados xlsx", "sublabel": "un archivo por BIN y fecha", "stage": 3, "row": 0 },
+    { "id": "plantilla", "type": "database", "label": "Plantillas masivas", "sublabel": ".txt y .xlsx", "tag": "HU13", "stage": 3, "row": 2 },
+    { "id": "historicos", "type": "database", "label": "Históricos", "sublabel": "HistoricoTicketInsumo y otros", "tag": "HU16", "stage": 3, "row": 3 },
+
+    { "id": "sharepoint", "type": "cloud", "label": "SharePoint", "sublabel": "repositorio final", "tag": "HU15", "stage": 4, "row": 0 },
+    { "id": "sap", "type": "external", "label": "SAP", "sublabel": "contabilización", "tag": "HU14", "stage": 4, "row": 2 }
+  ],
+  "flows": [
+    { "id": "f-anexos-param", "from": "anexos", "to": "param", "label": "hojas a tablas" },
+    { "id": "f-basebw-bonobw", "from": "basebw", "to": "bonobw", "label": "saldos BW", "variant": "emphasis" },
+    { "id": "f-txt-bines", "from": "txt", "to": "bines", "label": "BULK INSERT", "variant": "emphasis" },
+    { "id": "f-csb-detalle", "from": "csb", "to": "detalle", "label": "CSV y BULK" },
+
+    { "id": "f-bonobw-ticket", "from": "bonobw", "to": "ticket", "label": "partidas BW", "variant": "emphasis" },
+    { "id": "f-bines-ticket", "from": "bines", "to": "ticket", "label": "T87 por BIN", "variant": "emphasis" },
+    { "id": "f-bines-comp", "from": "bines", "to": "comp", "label": "registros SA" },
+
+    { "id": "f-ticket-consolidados", "from": "ticket", "to": "consolidados", "label": "SUBONOCOMPRA" },
+    { "id": "f-comp-consolidados", "from": "comp", "to": "consolidados", "label": "reportes xlsx" },
+    { "id": "f-comp-plantilla", "from": "comp", "to": "plantilla", "label": "estados finales", "variant": "emphasis" },
+    { "id": "f-detalle-plantilla", "from": "detalle", "to": "plantilla", "label": "ControlDetalle" },
+    { "id": "f-ticket-historicos", "from": "ticket", "to": "historicos", "label": "MERGE", "variant": "dashed" },
+
+    { "id": "f-plantilla-sap", "from": "plantilla", "to": "sap", "label": "CG3Z y ZFI007", "variant": "emphasis" },
+    { "id": "f-consolidados-sharepoint", "from": "consolidados", "to": "sharepoint", "label": "carga de archivos", "variant": "dashed" }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Camino principal",
+      "items": [
+        "Saldos BW y archivos T87 se cruzan por fecha, medio de pago y punto",
+        "Las compensaciones terminan en plantillas que HU14 carga en SAP",
+        "Sin errores, HU14 pega el DocContable de SAP al consolidado"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Lo que el export no muestra",
+      "items": [
+        "Quién produce BaseCuadreBW, los .txt y Control Su Bono",
+        "Cuerpos de los SP de HU05, HU12 y HU14",
+        "El SQL completo de las plantillas de HU13"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Fuente",
+      "items": [
+        "Grafo verificado de bruno-conciliacion-bonos: pasos, insumos y salidas"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Bruno: flujo de ejecución por HU",
+    "locale": "es",
+    "quality_profile": "showcase",
+    "output": ".archify/workflow-bruno-flujo-20261110-081533/bruno-flujo.html"
+  },
+  "lanes": [
+    { "id": "coord", "label": "Coordinador Main" },
+    { "id": "carga", "label": "Parámetros y carga de insumos" },
+    { "id": "detencion", "label": "Detenciones por validación", "variant": "exception" },
+    { "id": "conf", "label": "Confrontación y compensación" },
+    { "id": "cierre", "label": "Contabilización y cierre" }
+  ],
+  "nodes": [
+    { "id": "hu00", "lane": "coord", "col": 0, "type": "backend", "icon": "start", "label": "HU00 Despliegue", "sublabel": "arma Config desde Parametros" },
+    { "id": "limpieza", "lane": "coord", "col": 1, "type": "database", "label": "Limpieza diaria", "sublabel": "ControlHU de otro día: Activa=0" },
+    { "id": "bucle", "lane": "coord", "col": 2, "type": "backend", "label": "Bucle ControlHU", "sublabel": "TOP 1 HU con Activa=0", "tag": "ejecuta esa HU" },
+    { "id": "reintentos", "lane": "coord", "col": 3, "type": "security", "icon": "decision", "label": "Control de reintentos", "sublabel": "pReintentos vs Config" },
+    { "id": "errorgrave", "lane": "coord", "col": 4, "type": "security", "icon": "stop", "label": "Fin por error grave", "sublabel": "stopTask" },
+    { "id": "licencia", "lane": "coord", "col": 5, "type": "cloud", "icon": "success", "label": "Cambio de licencia", "sublabel": "API Control Room, FIN MAIN" },
+
+    { "id": "hu01", "lane": "carga", "col": 0, "type": "backend", "label": "HU01 Parámetros", "sublabel": "Anexo1 y Anexo5 a tablas" },
+    { "id": "hu02", "lane": "carga", "col": 1, "type": "backend", "label": "HU02 Control insumos", "sublabel": "ControlInsumo en estado 2" },
+    { "id": "hu03", "lane": "carga", "col": 2, "type": "backend", "label": "HU03 Insumo BW", "sublabel": "BaseCuadreBW a BonoBW" },
+    { "id": "hu04", "lane": "carga", "col": 3, "type": "backend", "label": "HU04 Archivos Su Bono", "sublabel": "T87, MV y SA a BinesSuBono" },
+    { "id": "hu05", "lane": "carga", "col": 4, "type": "backend", "label": "HU05 Reglas BIN", "sublabel": "medio de pago, punto, cuenta" },
+
+    { "id": "detiene", "lane": "detencion", "col": 3, "type": "security", "icon": "stop", "label": "Detiene el bot", "sublabel": "correo y stopTask" },
+
+    { "id": "hu06", "lane": "conf", "col": 5, "type": "backend", "label": "HU06 T87 vs Compras", "sublabel": "TicketInsumo, SUBONOCOMPRA" },
+    { "id": "hu07", "lane": "conf", "col": 4, "type": "backend", "label": "HU07 T87 vs Recargas", "sublabel": "SUBONORECARGA" },
+    { "id": "hu08", "lane": "conf", "col": 3, "type": "backend", "label": "HU08 Control detalle", "sublabel": "Control Su Bono a ControlDetalle" },
+    { "id": "hu09", "lane": "conf", "col": 2, "type": "backend", "label": "HU09 Compensar saldos", "sublabel": "suma cero, COMPSALDOS" },
+    { "id": "hu10", "lane": "conf", "col": 1, "type": "backend", "label": "HU10 Reclasificar SA", "sublabel": "RECLASALDOS" },
+    { "id": "hu11", "lane": "conf", "col": 0, "type": "backend", "label": "HU11 Bonos vencidos", "sublabel": "BONOVENCIDO", "tag": "sin control hoy: a HU13" },
+
+    { "id": "hu12", "lane": "cierre", "col": 0, "type": "backend", "label": "HU12 Compensar Su Bono", "sublabel": "SP opciones 1 a 11, C13" },
+    { "id": "hu13", "lane": "cierre", "col": 1, "type": "backend", "label": "HU13 Plantillas masivas", "sublabel": ".txt y .xlsx por plantilla" },
+    { "id": "hu14", "lane": "cierre", "col": 2, "type": "external", "label": "HU14 Carga en SAP", "sublabel": "CG3Z, ZFI007, UDM_PRMON", "tag": "efecto contable" },
+    { "id": "hu15", "lane": "cierre", "col": 3, "type": "cloud", "label": "HU15 SharePoint", "sublabel": "sube insumos, limpia file server" },
+    { "id": "hu16", "lane": "cierre", "col": 4, "type": "database", "label": "HU16 Históricos", "sublabel": "Historico*, borra TicketInsumo", "tag": "siguiente HU 1: fin" }
+  ],
+  "edges": [
+    { "id": "e-hu00-limpieza", "from": "hu00", "to": "limpieza", "variant": "emphasis" },
+    { "id": "e-limpieza-bucle", "from": "limpieza", "to": "bucle", "variant": "emphasis" },
+    { "id": "e-bucle-hu01", "from": "bucle", "to": "hu01", "label": "HU 1", "variant": "emphasis" },
+    { "id": "e-hu01-hu02", "from": "hu01", "to": "hu02" },
+    { "id": "e-hu02-hu03", "from": "hu02", "to": "hu03" },
+    { "id": "e-hu03-hu04", "from": "hu03", "to": "hu04" },
+    { "id": "e-hu04-hu05", "from": "hu04", "to": "hu05" },
+    { "id": "e-hu05-hu06", "from": "hu05", "to": "hu06" },
+    { "id": "e-hu06-hu07", "from": "hu06", "to": "hu07" },
+    { "id": "e-hu07-hu08", "from": "hu07", "to": "hu08" },
+    { "id": "e-hu08-hu09", "from": "hu08", "to": "hu09" },
+    { "id": "e-hu09-hu10", "from": "hu09", "to": "hu10" },
+    { "id": "e-hu10-hu11", "from": "hu10", "to": "hu11" },
+    { "id": "e-hu11-hu12", "from": "hu11", "to": "hu12" },
+    { "id": "e-hu12-hu13", "from": "hu12", "to": "hu13" },
+    { "id": "e-hu13-hu14", "from": "hu13", "to": "hu14" },
+    { "id": "e-hu14-hu15", "from": "hu14", "to": "hu15", "variant": "emphasis" },
+    { "id": "e-hu15-hu16", "from": "hu15", "to": "hu16" },
+    { "id": "e-hu16-licencia", "from": "hu16", "to": "licencia", "variant": "emphasis", "role": "return", "fromSide": "right", "toSide": "right", "route": "outside-right" },
+
+    { "id": "e-bucle-reintentos", "from": "bucle", "to": "reintentos", "label": "HU con excepción", "variant": "security", "role": "error" },
+    { "id": "e-reintentos-bucle", "from": "reintentos", "to": "bucle", "label": "correo y reintenta", "variant": "dashed", "role": "return" },
+    { "id": "e-reintentos-errorgrave", "from": "reintentos", "to": "errorgrave", "label": "tope alcanzado", "variant": "security", "role": "error" },
+
+    { "id": "e-hu03-detiene", "from": "hu03", "to": "detiene", "label": "falta insumo BW", "variant": "security", "role": "error" },
+    { "id": "e-hu05-detiene", "from": "hu05", "to": "detiene", "label": "BIN sin cruce", "variant": "security", "role": "error" },
+    { "id": "e-hu06-detiene", "from": "hu06", "to": "detiene", "label": "ningún control en 5", "variant": "security", "role": "error" },
+
+    { "id": "e-hu10-hu13", "from": "hu10", "to": "hu13", "label": "sin control de hoy", "variant": "dashed", "role": "branch", "fromSide": "bottom", "toSide": "top" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Cómo avanza",
+      "items": [
+        "Las flechas entre HU pasan por Main: cada HU devuelve oSiguienteHU y Main la marca en ControlHU",
+        "Relanzado el mismo día, retoma en la primera HU con Activa=0",
+        "HU08 con archivo inválido avisa y sigue a HU09 sin detener el bot"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Límites de la fuente",
+      "items": [
+        "HU13 y LoginSAPLogon se leyeron solo en parte",
+        "La lógica de HU12 vive en un SP que no está en el export",
+        "El porqué de negocio y quién opera el bot no están documentados"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Fuente",
+      "items": [
+        "Grafo verificado de bruno-conciliacion-bonos, notas PasoDeProceso",
+        "Export de Automation Anywhere de producción"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 3,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "Bruno: estados de ControlInsumo",
+    "locale": "es",
+    "quality_profile": "showcase",
+    "output": ".archify/lifecycle-bruno-control-insumo-20261110-081533/bruno-control-insumo.html"
+  },
+  "mainPath": ["pendiente", "cargado", "sharepoint"],
+  "states": [
+    { "id": "pendiente", "type": "start", "label": "Insumo pendiente", "sublabel": "lo crea HU02 desde el Excel", "tag": "estado 2", "step": "01" },
+    { "id": "cargado", "type": "active", "label": "Insumo cargado", "sublabel": "procesado por la HU que lo usa", "tag": "estado 5", "step": "02" },
+    { "id": "sharepoint", "type": "success", "label": "En SharePoint", "sublabel": "Archivo cargado al SharePoint", "tag": "estado 7", "step": "03" },
+    { "id": "nocumple", "type": "waiting", "label": "No cumple estructura", "sublabel": "reintentable o vacío", "tag": "estado 4" },
+    { "id": "rutaerror", "type": "failure", "label": "Ruta con error", "sublabel": "archivo inexistente al subir", "tag": "estado 8" },
+    { "id": "noprocesado", "type": "failure", "label": "No procesado", "sublabel": "o error de carga", "tag": "estado 99" }
+  ],
+  "transitions": [
+    { "id": "t-pendiente-cargado", "from": "pendiente", "to": "cargado", "label": "HU03 a HU13 lo cargan", "variant": "emphasis" },
+    { "id": "t-cargado-sharepoint", "from": "cargado", "to": "sharepoint", "label": "HU15 lo sube", "variant": "emphasis" },
+    { "id": "t-pendiente-nocumple", "from": "pendiente", "to": "nocumple", "label": "estructura inválida", "note": "HU04 y HU08", "variant": "security" },
+    { "id": "t-nocumple-cargado", "from": "nocumple", "to": "cargado", "label": "reintento", "note": "HU04", "variant": "dashed" },
+    { "id": "t-pendiente-noprocesado", "from": "pendiente", "to": "noprocesado", "label": "fecha anterior", "note": "HU09 a HU11", "variant": "security" },
+    { "id": "t-cargado-rutaerror", "from": "cargado", "to": "rutaerror", "label": "archivo no existe", "note": "HU15", "variant": "security" },
+    { "id": "t-cargado-noprocesado", "from": "cargado", "to": "noprocesado", "label": "falla en HU15", "note": "ruta sin FaseDos o error al subir", "variant": "security" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Para qué sirve",
+      "items": [
+        "ControlInsumo es el contrato de archivos esperados en el día",
+        "Cada HU busca sus insumos por estado y fecha"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Detalle de las transiciones",
+      "items": [
+        "Estructura inválida: HU04 envía correo 13; HU08 falla por archivo de control inválido",
+        "Reintento: HU04 vuelve a tomar estados 2 y 4 dentro de CantDiasAnteriores",
+        "Fecha anterior: HU09, HU10 y HU11 marcan 99 lo pendiente de días previos"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Sin evidencia en el export",
+      "items": [
+        "El catálogo oficial de estados no está en el export",
+        "Estado 6: HU15 lo selecciona, pero no se ve quién lo asigna",
+        "Un archivo de más de 250 MB no se sube; su estado final no consta"
+      ]
+    }
+  ]
+}

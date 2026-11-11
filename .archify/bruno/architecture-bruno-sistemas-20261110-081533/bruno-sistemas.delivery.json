@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "64e5989e-ec91-4daf-9de9-3db42b9f33c8",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\COLSUBSIDIO\\.archify\\architecture-bruno-sistemas-20261110-081533\\candidate.json",
+  "output": "C:\\COLSUBSIDIO\\.archify\\architecture-bruno-sistemas-20261110-081533\\bruno-sistemas.html",
+  "specification": {
+    "sha256": "7ed4500897536260cab9b7abb1a85f65878cbf6a79f3d8819eca449b82edab6f",
+    "bytes": 3539
+  },
+  "artifact": {
+    "sha256": "ed9274f24cefea7dde9774da83977d78284615567699dc67ea43df8a9101289c",
+    "bytes": 850037
+  }
+}

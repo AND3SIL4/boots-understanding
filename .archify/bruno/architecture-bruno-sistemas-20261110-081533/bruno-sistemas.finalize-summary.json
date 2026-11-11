@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\COLSUBSIDIO\\.archify\\architecture-bruno-sistemas-20261110-081533\\candidate.json",
+    "sha256": "7ed4500897536260cab9b7abb1a85f65878cbf6a79f3d8819eca449b82edab6f",
+    "bytes": 3539
+  },
+  "artifact": {
+    "path": "C:\\COLSUBSIDIO\\.archify\\architecture-bruno-sistemas-20261110-081533\\bruno-sistemas.html",
+    "sha256": "ed9274f24cefea7dde9774da83977d78284615567699dc67ea43df8a9101289c",
+    "bytes": 850037
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\COLSUBSIDIO\\.archify\\architecture-bruno-sistemas-20261110-081533\\bruno-sistemas.finalize.json",
+    "summaryReceipt": "C:\\COLSUBSIDIO\\.archify\\architecture-bruno-sistemas-20261110-081533\\bruno-sistemas.finalize-summary.json",
+    "browserCheckReceipt": "C:\\COLSUBSIDIO\\.archify\\architecture-bruno-sistemas-20261110-081533\\bruno-sistemas.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-11-10T13:16:07.018Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 6054,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  },
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "routesOverSuggestedBends": 2
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [],
+      "detours": [
+        {
+          "relationship": {
+            "id": "bot-vault",
+            "from": "bot",
+            "to": "vault",
+            "label": "credenciales",
+            "collectionIndex": 0,
+            "artifactIndex": 1
+          },
+          "bends": 3,
+          "stretch": 1
+        },
+        {
+          "relationship": {
+            "id": "bot-sql",
+            "from": "bot",
+            "to": "sql",
+            "label": "SQLOLEDB",
+            "collectionIndex": 5,
+            "artifactIndex": 6
+          },
+          "bends": 3,
+          "stretch": 1.171
+        }
+      ],
+      "truncated": false
+    },
+    "hints": [
+      "bot → vault needs 3 bends: move node bot or vault so they share a row or column with matching centers, or sit diagonally with a clear corner.",
+      "bot → sql needs 3 bends: move node bot or sql so they share a row or column with matching centers, or sit diagonally with a clear corner."
+    ],
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
+}

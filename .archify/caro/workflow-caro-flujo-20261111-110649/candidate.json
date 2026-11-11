@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Caro: flujo principal del cruce de cuentas",
+    "locale": "es",
+    "quality_profile": "showcase",
+    "output": ".archify/caro/workflow-caro-flujo-20261111-110649/caro-flujo.html"
+  },
+  "lanes": [
+    { "id": "remitente", "label": "Área remitente (Lane 1)" },
+    { "id": "validacion", "label": "Auxiliar Egresos: insumo y validación" },
+    { "id": "plantillas", "label": "Auxiliar Egresos: plantillas e informes" },
+    { "id": "novedades", "label": "Novedades", "variant": "exception" },
+    { "id": "robotA", "label": "Robot rpa-caro: insumos y cruce" },
+    { "id": "robotB", "label": "Robot rpa-caro: pago y publicación" }
+  ],
+  "nodes": [
+    { "id": "inicio", "lane": "remitente", "col": 0, "type": "external", "icon": "start", "label": "Fin de pagaduría", "sublabel": "frecuencia semanal" },
+    { "id": "enviar", "lane": "remitente", "col": 1, "type": "messagebus", "label": "Envía archivo por correo", "sublabel": "Cruce de Cuentas Especial", "tag": "inconsistencia: origen" },
+
+    { "id": "recibir", "lane": "validacion", "col": 1, "type": "backend", "label": "Recibe y organiza", "sublabel": "archivo Cruce Especial" },
+    { "id": "cartera", "lane": "validacion", "col": 2, "type": "backend", "label": "Valida cartera", "sublabel": "por tercero, SAP FBL1N" },
+    { "id": "saldos", "lane": "validacion", "col": 3, "type": "backend", "label": "Valida saldos", "sublabel": "notas crédito, devoluciones, deducciones" },
+    { "id": "cxp", "lane": "validacion", "col": 4, "type": "backend", "label": "Valida cuentas por pagar", "sublabel": "vía de pago, sin bloqueo", "tag": "inconsistencia: bloqueos" },
+    { "id": "excluir", "lane": "validacion", "col": 5, "type": "backend", "icon": "decision", "label": "Excluye clases no cruzables", "sublabel": "¿cumple condiciones?" },
+
+    { "id": "aplicar", "lane": "plantillas", "col": 5, "type": "backend", "label": "Aplica condiciones de cruce", "sublabel": "criterios no listados" },
+    { "id": "asignar", "lane": "plantillas", "col": 4, "type": "backend", "icon": "decision", "label": "Asigna banco específico", "sublabel": "Plantilla Masiva, ¿se genera?" },
+    { "id": "actualizar", "lane": "plantillas", "col": 3, "type": "database", "label": "Actualiza cruces", "sublabel": "Cruce Especial actualizado" },
+    { "id": "reporte", "lane": "plantillas", "col": 2, "type": "backend", "label": "Reporte de pago", "sublabel": "semanal, terceros cruzados", "tag": "inconsistencia: alcance" },
+    { "id": "fin", "lane": "plantillas", "col": 1, "type": "external", "icon": "flag", "label": "Análisis no cruzados", "sublabel": "fin del flujo" },
+
+    { "id": "reproceso", "lane": "novedades", "col": 4, "type": "security", "icon": "failure", "label": "Reprocesa plantillas", "sublabel": "o reporte de novedad" },
+    { "id": "novedad", "lane": "novedades", "col": 5, "type": "security", "icon": "stop", "label": "Reporte novedad", "sublabel": "no aplica cruce" },
+
+    { "id": "r1", "lane": "robotA", "col": 0, "type": "messagebus", "label": "1 Consulta correo", "sublabel": "fin de pagaduría" },
+    { "id": "r2", "lane": "robotA", "col": 1, "type": "backend", "label": "2 Descarga de SAP", "sublabel": "deudores, acreedores, amarres", "tag": "inconsistencia: origen" },
+    { "id": "r3", "lane": "robotA", "col": 2, "type": "backend", "label": "3 Levanta bloqueo", "sublabel": "qué bloqueo: sin fuente", "tag": "inconsistencia: bloqueos" },
+    { "id": "r4", "lane": "robotA", "col": 3, "type": "backend", "label": "4 Propuesta de cruce", "sublabel": "criterios sin fuente" },
+    { "id": "r5", "lane": "robotB", "col": 3, "type": "backend", "label": "5 Asigna bancos propios", "sublabel": "banco y cuenta sin fuente" },
+    { "id": "r6", "lane": "robotB", "col": 4, "type": "backend", "label": "6 Propuesta de pago SAP", "sublabel": "¿solo genera o ejecuta?", "tag": "inconsistencia: alcance" },
+    { "id": "r7", "lane": "robotB", "col": 5, "type": "cloud", "icon": "success", "label": "7 Comparte en SharePoint", "sublabel": "sitio sin documentar" }
+  ],
+  "edges": [
+    { "id": "e-inicio-enviar", "from": "inicio", "to": "enviar", "variant": "emphasis" },
+    { "id": "e-enviar-recibir", "from": "enviar", "to": "recibir", "label": "correo", "variant": "emphasis" },
+    { "id": "e-recibir-cartera", "from": "recibir", "to": "cartera" },
+    { "id": "e-cartera-saldos", "from": "cartera", "to": "saldos" },
+    { "id": "e-saldos-cxp", "from": "saldos", "to": "cxp" },
+    { "id": "e-cxp-excluir", "from": "cxp", "to": "excluir" },
+    { "id": "e-excluir-aplicar", "from": "excluir", "to": "aplicar", "label": "cumple", "variant": "emphasis" },
+    { "id": "e-aplicar-asignar", "from": "aplicar", "to": "asignar" },
+    { "id": "e-asignar-actualizar", "from": "asignar", "to": "actualizar", "label": "genera", "variant": "emphasis" },
+    { "id": "e-actualizar-reporte", "from": "actualizar", "to": "reporte" },
+    { "id": "e-reporte-fin", "from": "reporte", "to": "fin", "variant": "emphasis" },
+
+    { "id": "e-excluir-novedad", "from": "excluir", "to": "novedad", "label": "no cumple", "variant": "security", "role": "error", "fromSide": "right", "toSide": "right", "route": "outside-right" },
+    { "id": "e-asignar-reproceso", "from": "asignar", "to": "reproceso", "label": "no genera", "variant": "security", "role": "error" },
+
+    { "id": "e-inicio-r1", "from": "inicio", "to": "r1", "label": "vista del robot", "variant": "dashed", "role": "branch" },
+    { "id": "e-r1-r2", "from": "r1", "to": "r2" },
+    { "id": "e-r2-r3", "from": "r2", "to": "r3" },
+    { "id": "e-r3-r4", "from": "r3", "to": "r4" },
+    { "id": "e-r4-r5", "from": "r4", "to": "r5" },
+    { "id": "e-r5-r6", "from": "r5", "to": "r6" },
+    { "id": "e-r6-r7", "from": "r6", "to": "r7" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Cómo leer",
+      "items": [
+        "Arriba: flujo a alto nivel del diagrama BPMN (PROC-001), ejecutado por el Auxiliar Egresos",
+        "Abajo: las 7 actividades del robot según la infografía (PROC-002)",
+        "Las dos vistas no están fusionadas en el vault: 7 pares son candidatos a fusión, sin confirmar"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Inconsistencias abiertas",
+      "items": [
+        "Origen: el robot descarga de SAP vs el archivo llega por correo",
+        "Bloqueos: el robot levanta bloqueo vs las partidas bloqueadas se excluyen",
+        "Alcance: el robot genera propuesta de pago vs el flujo termina en el reporte",
+        "Día: viernes 10:30 a 13:30 (infografía) vs pagaduría los jueves (2022)"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Límites de la fuente",
+      "items": [
+        "Sin export real del bot: no se sabe en qué herramienta RPA está construido",
+        "Sin DDL; la especificación funcional V.2.8 no se leyó",
+        "Las condiciones de cruce y las clases no cruzables no están listadas"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Fuente",
+      "items": [
+        "Grafo verificado de caro-cruce-cuentas: notas Proceso y PasoDeProceso",
+        "Origen: Flujo a Alto Nivel.png e Infografía CARO (nivel 3)"
+      ]
+    }
+  ]
+}

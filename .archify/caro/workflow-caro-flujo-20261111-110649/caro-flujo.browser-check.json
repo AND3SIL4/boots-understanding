@@ -1,0 +1,1693 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "browser-check",
+  "evidenceKind": "automated-browser",
+  "status": "pass",
+  "visualReview": "not-requested",
+  "provenance": "current",
+  "deliveryReceiptId": "c1f89077-e82f-48cd-ae8c-60b9be0d6b66",
+  "artifact": {
+    "path": "C:\\COLSUBSIDIO\\.archify\\caro\\workflow-caro-flujo-20261111-110649\\caro-flujo.html",
+    "sha256": "42560d8aa765b5ca38bb8a0b3104a36f045ac37d36294ba9def44bdd44e1fe2c",
+    "bytes": 868144
+  },
+  "state": {
+    "detail": "read",
+    "motion": "still"
+  },
+  "chrome": {
+    "status": "available",
+    "executable": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+  },
+  "diagnostics": [],
+  "containment": {
+    "status": "pass",
+    "policy": "fit-or-reader-declared-readable-vertical-scroll",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 1201,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1376,
+        "diagramWidth": 1346,
+        "pageComposition": {
+          "bodyPaddingPx": 12,
+          "headerPx": 52,
+          "diagramChromePx": 78,
+          "svgPx": 1058,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 123,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 123,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 123,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 123,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 60,
+            "spaceAboveNodesPx": 49,
+            "spaceBelowNodesPx": 14
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 123,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 123,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 54,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      },
+      {
+        "width": 1600,
+        "height": 1000,
+        "theme": "light",
+        "innerWidth": 1600,
+        "innerHeight": 1000,
+        "scrollWidth": 1600,
+        "scrollHeight": 1393,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1536,
+        "diagramWidth": 1506,
+        "pageComposition": {
+          "bodyPaddingPx": 64,
+          "headerPx": 60,
+          "diagramChromePx": 84,
+          "svgPx": 1184,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 138,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 138,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 138,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 138,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 68,
+            "spaceAboveNodesPx": 55,
+            "spaceBelowNodesPx": 16
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 138,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 138,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 54,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "theme": "light",
+        "innerWidth": 1920,
+        "innerHeight": 1080,
+        "scrollWidth": 1920,
+        "scrollHeight": 1576,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1856,
+        "diagramWidth": 1740,
+        "pageComposition": {
+          "bodyPaddingPx": 64,
+          "headerPx": 60,
+          "diagramChromePx": 84,
+          "svgPx": 1368,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 78,
+            "spaceAboveNodesPx": 63,
+            "spaceBelowNodesPx": 18
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 159,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 159,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 54,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      },
+      {
+        "width": 2048,
+        "height": 1320,
+        "theme": "light",
+        "innerWidth": 2048,
+        "innerHeight": 1320,
+        "scrollWidth": 2048,
+        "scrollHeight": 1594,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1920,
+        "diagramWidth": 1740,
+        "pageComposition": {
+          "bodyPaddingPx": 64,
+          "headerPx": 68,
+          "diagramChromePx": 94,
+          "svgPx": 1368,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 78,
+            "spaceAboveNodesPx": 63,
+            "spaceBelowNodesPx": 18
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 159,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 159,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 44,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      }
+    ]
+  },
+  "themeStates": {
+    "status": "pass",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900,
+        "requestedTheme": "light",
+        "resolvedTheme": "light",
+        "ok": true
+      },
+      {
+        "width": 1600,
+        "height": 1000,
+        "requestedTheme": "light",
+        "resolvedTheme": "light",
+        "ok": true
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "requestedTheme": "light",
+        "resolvedTheme": "light",
+        "ok": true
+      },
+      {
+        "width": 2048,
+        "height": 1320,
+        "requestedTheme": "light",
+        "resolvedTheme": "light",
+        "ok": true
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "requestedTheme": "dark",
+        "resolvedTheme": "dark",
+        "ok": true
+      },
+      {
+        "width": 2048,
+        "height": 1320,
+        "requestedTheme": "dark",
+        "resolvedTheme": "dark",
+        "ok": true
+      }
+    ]
+  },
+  "readability": {
+    "status": "pass",
+    "minimumProjectedNodeTextPx": 6,
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 1201,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1376,
+        "diagramWidth": 1346,
+        "pageComposition": {
+          "bodyPaddingPx": 12,
+          "headerPx": 52,
+          "diagramChromePx": 78,
+          "svgPx": 1058,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 123,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 123,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 123,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 123,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 60,
+            "spaceAboveNodesPx": 49,
+            "spaceBelowNodesPx": 14
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 123,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 123,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 54,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      },
+      {
+        "width": 1600,
+        "height": 1000,
+        "theme": "light",
+        "innerWidth": 1600,
+        "innerHeight": 1000,
+        "scrollWidth": 1600,
+        "scrollHeight": 1393,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1536,
+        "diagramWidth": 1506,
+        "pageComposition": {
+          "bodyPaddingPx": 64,
+          "headerPx": 60,
+          "diagramChromePx": 84,
+          "svgPx": 1184,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 138,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 138,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 138,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 138,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 68,
+            "spaceAboveNodesPx": 55,
+            "spaceBelowNodesPx": 16
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 138,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 138,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 54,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "theme": "light",
+        "innerWidth": 1920,
+        "innerHeight": 1080,
+        "scrollWidth": 1920,
+        "scrollHeight": 1576,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1856,
+        "diagramWidth": 1740,
+        "pageComposition": {
+          "bodyPaddingPx": 64,
+          "headerPx": 60,
+          "diagramChromePx": 84,
+          "svgPx": 1368,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 78,
+            "spaceAboveNodesPx": 63,
+            "spaceBelowNodesPx": 18
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 159,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 159,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 54,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      },
+      {
+        "width": 2048,
+        "height": 1320,
+        "theme": "light",
+        "innerWidth": 2048,
+        "innerHeight": 1320,
+        "scrollWidth": 2048,
+        "scrollHeight": 1594,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1920,
+        "diagramWidth": 1740,
+        "pageComposition": {
+          "bodyPaddingPx": 64,
+          "headerPx": 68,
+          "diagramChromePx": 94,
+          "svgPx": 1368,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 78,
+            "spaceAboveNodesPx": 63,
+            "spaceBelowNodesPx": 18
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 159,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 159,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 44,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      }
+    ]
+  },
+  "viewerChrome": {
+    "status": "pass",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 1201,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1376,
+        "diagramWidth": 1346,
+        "pageComposition": {
+          "bodyPaddingPx": 12,
+          "headerPx": 52,
+          "diagramChromePx": 78,
+          "svgPx": 1058,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 123,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 123,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 123,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 123,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 60,
+            "spaceAboveNodesPx": 49,
+            "spaceBelowNodesPx": 14
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 123,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 123,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 79,
+            "spaceAboveNodesPx": 39,
+            "spaceBelowNodesPx": 5
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 54,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      },
+      {
+        "width": 1600,
+        "height": 1000,
+        "theme": "light",
+        "innerWidth": 1600,
+        "innerHeight": 1000,
+        "scrollWidth": 1600,
+        "scrollHeight": 1393,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1536,
+        "diagramWidth": 1506,
+        "pageComposition": {
+          "bodyPaddingPx": 64,
+          "headerPx": 60,
+          "diagramChromePx": 84,
+          "svgPx": 1184,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 138,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 138,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 138,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 138,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 68,
+            "spaceAboveNodesPx": 55,
+            "spaceBelowNodesPx": 16
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 138,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 138,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 88,
+            "spaceAboveNodesPx": 44,
+            "spaceBelowNodesPx": 5
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 54,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "theme": "light",
+        "innerWidth": 1920,
+        "innerHeight": 1080,
+        "scrollWidth": 1920,
+        "scrollHeight": 1576,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1856,
+        "diagramWidth": 1740,
+        "pageComposition": {
+          "bodyPaddingPx": 64,
+          "headerPx": 60,
+          "diagramChromePx": 84,
+          "svgPx": 1368,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 78,
+            "spaceAboveNodesPx": 63,
+            "spaceBelowNodesPx": 18
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 159,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 159,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 54,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      },
+      {
+        "width": 2048,
+        "height": 1320,
+        "theme": "light",
+        "innerWidth": 2048,
+        "innerHeight": 1320,
+        "scrollWidth": 2048,
+        "scrollHeight": 1594,
+        "overflowX": false,
+        "overflowY": true,
+        "verticalScrollAccepted": true,
+        "overflowDisposition": "readable-vertical-scroll",
+        "readerLayout": "adaptive",
+        "readerOverflow": "authored",
+        "readerFit": "width-first",
+        "ok": true,
+        "readerWidth": 1920,
+        "diagramWidth": 1740,
+        "pageComposition": {
+          "bodyPaddingPx": 64,
+          "headerPx": 68,
+          "diagramChromePx": 94,
+          "svgPx": 1368,
+          "cardsPx": 0,
+          "viewBoxHeight": 912
+        },
+        "viewBoxWidth": 1160,
+        "workflowLanes": [
+          {
+            "frameId": "lane-0",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "inicio",
+              "enviar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-1",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "recibir",
+              "cartera",
+              "saldos",
+              "cxp",
+              "excluir"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-2",
+            "heightPx": 159,
+            "nodeCount": 5,
+            "nodeIds": [
+              "fin",
+              "reporte",
+              "actualizar",
+              "asignar",
+              "aplicar"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-3",
+            "heightPx": 159,
+            "nodeCount": 2,
+            "nodeIds": [
+              "reproceso",
+              "novedad"
+            ],
+            "nodeSpanPx": 78,
+            "spaceAboveNodesPx": 63,
+            "spaceBelowNodesPx": 18
+          },
+          {
+            "frameId": "lane-4",
+            "heightPx": 159,
+            "nodeCount": 4,
+            "nodeIds": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          },
+          {
+            "frameId": "lane-5",
+            "heightPx": 159,
+            "nodeCount": 3,
+            "nodeIds": [
+              "r5",
+              "r6",
+              "r7"
+            ],
+            "nodeSpanPx": 102,
+            "spaceAboveNodesPx": 51,
+            "spaceBelowNodesPx": 6
+          }
+        ],
+        "minimumProjectedNodeTextPx": 7.5,
+        "minimumProjectedNonEdgeTextPx": 7.5,
+        "minimumProjectedEdgeTextPx": 8,
+        "minimumProjectedNodeText": "por tercero, SAP FBL1N",
+        "minimumProjectedNodeTextDetail": "context",
+        "minimumProjectedNodeTextOwner": {
+          "kind": "node",
+          "id": "cartera"
+        },
+        "minimumRequiredNodeTextPx": 6,
+        "readabilityOk": true,
+        "hasLegend": true,
+        "hasNavigationDock": true,
+        "legendDockIntersectionArea": 0,
+        "dockStageIntersectionArea": 0,
+        "dockStageGap": 10,
+        "requiredDockStageGap": 10,
+        "viewerChromeStageOk": true,
+        "viewerChromeReserve": 44,
+        "viewerChromeActive": true,
+        "viewerChromeOk": true,
+        "resolvedTheme": "light"
+      }
+    ]
+  },
+  "captures": {
+    "status": "not-requested",
+    "screenshots": [],
+    "contactSheet": null
+  },
+  "sidecars": {
+    "receipt": "caro-flujo.browser-check.json",
+    "files": []
+  }
+}

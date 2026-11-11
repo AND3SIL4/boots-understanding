@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "3e8e3f31-d0c0-4e8e-aedf-c49736e0eced",
+  "status": "current",
+  "command": "deliver",
+  "type": "lifecycle",
+  "input": "C:\\COLSUBSIDIO\\.archify\\lifecycle-bruno-control-insumo-20261110-081533\\candidate.json",
+  "output": "C:\\COLSUBSIDIO\\.archify\\lifecycle-bruno-control-insumo-20261110-081533\\bruno-control-insumo.html",
+  "specification": {
+    "sha256": "9aff7f993be1d7a50a23a8a718eaf0bb53d193c717c875d687afe21290e3fad0",
+    "bytes": 3163
+  },
+  "artifact": {
+    "sha256": "2d066e272602138242f5135939de3b4e9caf298de24cdfa8606480729dc2479d",
+    "bytes": 842413
+  }
+}

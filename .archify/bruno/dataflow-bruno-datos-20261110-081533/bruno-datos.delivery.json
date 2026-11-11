@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "597a8e6c-7be2-40cc-babc-adad4128fd13",
+  "status": "current",
+  "command": "deliver",
+  "type": "dataflow",
+  "input": "C:\\COLSUBSIDIO\\.archify\\dataflow-bruno-datos-20261110-081533\\candidate.json",
+  "output": "C:\\COLSUBSIDIO\\.archify\\dataflow-bruno-datos-20261110-081533\\bruno-datos.html",
+  "specification": {
+    "sha256": "5e9ee017222e89d238adef892a606a5b3ae72fcc7872a2f1e603dec259f36222",
+    "bytes": 4833
+  },
+  "artifact": {
+    "sha256": "bccc91830fe12d944ad9b9982605acc8446467758ec45a569149d008618b7854",
+    "bytes": 855027
+  }
+}

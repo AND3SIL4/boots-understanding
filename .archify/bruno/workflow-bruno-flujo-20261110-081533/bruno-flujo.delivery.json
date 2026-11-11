@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "1aea2583-be0c-47f4-996c-d5d95988c7a3",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "C:\\COLSUBSIDIO\\.archify\\workflow-bruno-flujo-20261110-081533\\candidate.json",
+  "output": "C:\\COLSUBSIDIO\\.archify\\workflow-bruno-flujo-20261110-081533\\bruno-flujo.html",
+  "specification": {
+    "sha256": "b1f0084aa348eb9e730250b0bea7b89886924d39147c8294db631056e1374508",
+    "bytes": 7310
+  },
+  "artifact": {
+    "sha256": "8312c746923148cb520eab4a636ec692965b39543f0a8f3d961ab8618e20c7ba",
+    "bytes": 871814
+  }
+}

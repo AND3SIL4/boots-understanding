@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Bruno: sistemas e integraciones",
+    "locale": "es",
+    "quality_profile": "showcase",
+    "output": ".archify/architecture-bruno-sistemas-20261110-081533/bruno-sistemas.html"
+  },
+  "components": [
+    { "id": "vault", "type": "security", "label": "Credential Vault", "sublabel": "lockers Globales, Cajeros, SuBonoContable", "pos": [40, 40], "size": [230, 64] },
+    { "id": "controlroom", "type": "cloud", "label": "Control Room A360", "sublabel": "colsubsidio-2.my.automationanywhere", "pos": [40, 220], "size": [230, 64] },
+    { "id": "correo", "type": "cloud", "label": "Exchange (EWS)", "sublabel": "SendMailV2, client credentials", "pos": [40, 400], "size": [230, 64] },
+    { "id": "fileserver", "type": "database", "label": "File server", "sublabel": "anexos, .txt diarios, consolidados", "pos": [390, 40], "size": [230, 64] },
+    { "id": "bot", "type": "backend", "label": "Bruno: Main_SuBonoContable", "sublabel": "coordinador + 17 HU + funciones", "tag": "Automation 360", "pos": [390, 210], "size": [230, 84] },
+    { "id": "excel", "type": "frontend", "label": "Excel de escritorio", "sublabel": "teclas y VBScript", "pos": [390, 400], "size": [230, 64] },
+    { "id": "sharepoint", "type": "cloud", "label": "SharePoint", "sublabel": "repositorio final de archivos", "pos": [760, 40], "size": [220, 64] },
+    { "id": "sql", "type": "database", "label": "SQL Server RPA", "sublabel": "esquemas SuBono y Cajero, SP", "tag": "ControlHU, ControlInsumo", "pos": [760, 216], "size": [220, 72] },
+    { "id": "sap", "type": "external", "label": "SAP GUI", "sublabel": "CG3Z, ZFI007, UDM_PRMON", "tag": "efecto contable", "pos": [760, 400], "size": [220, 64] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Bot runner (WPROFABRIC5RPAC2 en logs)", "wraps": ["bot", "excel"] }
+  ],
+  "connections": [
+    { "id": "bot-vault", "from": "bot", "to": "vault", "label": "credenciales", "variant": "security" },
+    { "id": "bot-controlroom", "from": "bot", "to": "controlroom", "label": "API licencia" },
+    { "id": "bot-correo", "from": "bot", "to": "correo", "label": "correos" },
+    { "id": "bot-fileserver", "from": "bot", "to": "fileserver", "label": "lee y escribe", "variant": "emphasis" },
+    { "id": "bot-excel", "from": "bot", "to": "excel", "label": "teclas" },
+    { "id": "bot-sql", "from": "bot", "to": "sql", "label": "SQLOLEDB", "variant": "emphasis" },
+    { "id": "bot-sharepoint", "from": "bot", "to": "sharepoint", "label": "sube (HU15)" },
+    { "id": "bot-sap", "from": "bot", "to": "sap", "label": "GUI (HU14)", "variant": "emphasis" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Tablas que gobiernan la corrida",
+      "items": [
+        "ControlHU: en qué HU va el día; permite retomar",
+        "ControlInsumo: qué archivos se esperan y su estado",
+        "BinesSuBono, BonoBW y TicketInsumo: datos confrontados"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Puntos frágiles",
+      "items": [
+        "HU15 trae un secreto de SharePoint en texto claro",
+        "Las teclas de Excel dependen del idioma instalado",
+        "BULK INSERT exige que SQL Server lea RutaTemporal"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "No documentado",
+      "items": [
+        "Versiones de A360 y SAP, red y modo de ejecución",
+        "Los correos usan otra máquina quemada (192 168 50 22)",
+        "Productores de las tablas Cajero.* y de los .txt"
+      ]
+    }
+  ]
+}
